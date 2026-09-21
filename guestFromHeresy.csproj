@@ -8,6 +8,8 @@
         
         <Sts2Dir>F:\SteamLibrary\steamapps\common\Slay the Spire 2</Sts2Dir>
         <Sts2DataDir>$(Sts2Dir)\data_sts2_windows_x86_64</Sts2DataDir>
+        <GodotExe>D:\Godot_v4.5.1-stable_mono_win64\Godot_v4.5.1-stable_mono_win64.exe</GodotExe>
+        <ModDir>$(Sts2Dir)\mods\$(MSBuildProjectName)</ModDir>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,8 +26,19 @@
     
     <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
         <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high" />
-        <MakeDir Directories="$(Sts2Dir)\mods\" />
-        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(Sts2Dir)\mods\$(MSBuildProjectName)\" />
-        <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/" />
+        <MakeDir Directories="$(ModDir)" />
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModDir)" />
+        <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(ModDir)" />
+    </Target>
+
+    <Target Name="ExportPck"
+            AfterTargets="Publish"
+            Condition="'$(IsTimerGodotExport)' != 'true'">
+        <Error Condition="!Exists('$(GodotExe)')"
+               Text="Godot executable was not found at '$(GodotExe)'. Update the GodotExe property in $(MSBuildProjectFile)." />
+        <Message Text="Exporting PCK to the Slay the Spire 2 mods folder..." Importance="high" />
+        <MakeDir Directories="$(ModDir)" />
+        <Exec Command="&quot;$(GodotExe)&quot; --headless --path &quot;$(MSBuildProjectDirectory)&quot; --export-pack &quot;Windows Desktop&quot; &quot;$(ModDir)\$(MSBuildProjectName).pck&quot;"
+              EnvironmentVariables="IsTimerGodotExport=true;STSDISABLEMODREUSE=1" />
     </Target>
 </Project>
