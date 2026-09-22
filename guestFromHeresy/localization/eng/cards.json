@@ -1,0 +1,6 @@
+{
+  "GUEST_FROM_HERESY_CARD_STRIKE.title": "Crescent",
+  "GUEST_FROM_HERESY_CARD_STRIKE.description": "Deal {Damage:diff()} damage. Transform into Full Moon when played.",
+  "GUEST_FROM_HERESY_CARD_DEFEND.title": "Full Moon",
+  "GUEST_FROM_HERESY_CARD_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold]. Transform into Crescent when played."
+}

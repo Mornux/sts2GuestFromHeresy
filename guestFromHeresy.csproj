@@ -10,6 +10,8 @@
         <Sts2DataDir>$(Sts2Dir)\data_sts2_windows_x86_64</Sts2DataDir>
         <GodotExe>D:\Godot_v4.5.1-stable_mono_win64\Godot_v4.5.1-stable_mono_win64.exe</GodotExe>
         <ModDir>$(Sts2Dir)\mods\$(MSBuildProjectName)</ModDir>
+        <RitsuLibDir>$(Sts2Dir)\mods\STS2-RitsuLib</RitsuLibDir>
+        <RitsuLibReferenceTarget>0.111.0</RitsuLibReferenceTarget>
     </PropertyGroup>
 
     <ItemGroup>
@@ -23,6 +25,15 @@
             <Private>false</Private>
         </Reference>
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="scripts\Keywords\" />
+      <Folder Include="scripts\Potions\" />
+      <Folder Include="scripts\Powers\" />
+      <Folder Include="scripts\Relics\" />
+    </ItemGroup>
+
+    <Import Project="$(RitsuLibDir)\RitsuLib.References.props" />
     
     <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
         <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high" />

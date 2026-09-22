@@ -1,0 +1,13 @@
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\bin\ExportRelease\guestFromHeresy.deps.json
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\bin\ExportRelease\guestFromHeresy.dll
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\bin\ExportRelease\guestFromHeresy.pdb
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\guestFromHeresy.csproj.AssemblyReference.cache
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\guestFromHeresy.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\guestFromHeresy.AssemblyInfoInputs.cache
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\guestFromHeresy.AssemblyInfo.cs
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\guestFromHeresy.csproj.CoreCompileInputs.cache
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\guestFromHeresy.sourcelink.json
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\guestFromHeresy.dll
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\refint\guestFromHeresy.dll
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\guestFromHeresy.pdb
+D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\obj\ExportRelease\ref\guestFromHeresy.dll
