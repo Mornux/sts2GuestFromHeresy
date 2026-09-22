@@ -1,0 +1,11 @@
+{
+  "GUEST_FROM_HERESY_RELIC_VOID_FRAGMENT.title": "Void Fragment",
+  "GUEST_FROM_HERESY_RELIC_VOID_FRAGMENT.description": "Per stack: Projection of Lostava starts each combat with 5 more HP. Gain 1 additional Strength and Dexterity while Gazed.",
+  "GUEST_FROM_HERESY_RELIC_VOID_FRAGMENT.flavor": "Fragmented words point toward an endless void.",
+  "GUEST_FROM_HERESY_RELIC_SEALED_GATE.title": "Sealed Gate",
+  "GUEST_FROM_HERESY_RELIC_SEALED_GATE.description": "During this combat, each [gold]Energy[/gold] spent grants Projection of Lostava 1 Max HP and heals it for 1 HP.",
+  "GUEST_FROM_HERESY_RELIC_SEALED_GATE.flavor": "Behind the door, a page turns.",
+  "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.title": "Unsealed Portal",
+  "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.description": "During this combat, each [gold]Energy[/gold] spent grants Projection of Lostava 2 Max HP and heals it for 2 HP.",
+  "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.flavor": "The door is open. The gaze never ceased."
+}

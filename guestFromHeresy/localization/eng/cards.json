@@ -1,6 +1,22 @@
 {
-  "GUEST_FROM_HERESY_CARD_STRIKE.title": "Crescent",
-  "GUEST_FROM_HERESY_CARD_STRIKE.description": "Deal {Damage:diff()} damage. Transform into Full Moon when played.",
-  "GUEST_FROM_HERESY_CARD_DEFEND.title": "Full Moon",
-  "GUEST_FROM_HERESY_CARD_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold]. Transform into Crescent when played."
+  "GUEST_FROM_HERESY_CARD_ADVENT.title": "Advent",
+  "GUEST_FROM_HERESY_CARD_ADVENT.description": "Gain {GazedPower:diff()} [gold]Gazed[/gold].",
+  "GUEST_FROM_HERESY_CARD_INNER_FEAR.title": "Inner Fear",
+  "GUEST_FROM_HERESY_CARD_INNER_FEAR.description": "Deal {Damage:diff()} damage and apply {VulnerablePower:diff()} [gold]Vulnerable[/gold]. NL [gold]Synaesthesia[/gold]: Affect ALL enemies instead.",
+  "GUEST_FROM_HERESY_CARD_CRESCENT.title": "Crescent",
+  "GUEST_FROM_HERESY_CARD_CRESCENT.description": "Deal {Damage:diff()} damage. Transform into [gold]{IfUpgraded:show:Full Moon+|Full Moon}[/gold] when played.",
+  "GUEST_FROM_HERESY_CARD_FULL_MOON.title": "Full Moon",
+  "GUEST_FROM_HERESY_CARD_FULL_MOON.description": "Gain {Block:diff()} [gold]Block[/gold]. Transform into [gold]{IfUpgraded:show:Crescent+|Crescent}[/gold] when played.",
+  "GUEST_FROM_HERESY_CARD_ILLUSION.title": "Illusion",
+  "GUEST_FROM_HERESY_CARD_ILLUSION.description": "Copy {Cards:diff()} random cards in your draw pile. Add the copies to your hand with [gold]Ethereal[/gold].",
+  "GUEST_FROM_HERESY_CARD_CHAOS_GRIMOIRE.title": "Chaos Grimoire",
+  "GUEST_FROM_HERESY_CARD_CHAOS_GRIMOIRE.description": "Draw {Cards:diff()} cards. Transform this card into [gold]Slimed[/gold].",
+  "GUEST_FROM_HERESY_CARD_ENTROPIC_METAMORPHOSIS.title": "Entropic Metamorphosis",
+  "GUEST_FROM_HERESY_CARD_ENTROPIC_METAMORPHOSIS.description": "Add 2 copies of this card to your hand. Draw {Cards:diff()} cards.",
+  "GUEST_FROM_HERESY_CARD_HOWL_OF_SUFFERING.title": "Howl of Suffering",
+  "GUEST_FROM_HERESY_CARD_HOWL_OF_SUFFERING.description": "For each stack of debuffs you have, gain 1 [gold]Gazed[/gold] and draw {Cards:diff()} cards.",
+  "GUEST_FROM_HERESY_CARD_SHADOW_SHIELD.title": "Shadow Shield",
+  "GUEST_FROM_HERESY_CARD_SHADOW_SHIELD.description": "Gain {Block:diff()} [gold]Block[/gold]. Whenever this card enters your discard pile, gain 1 [gold]Disintegration[/gold].",
+  "GUEST_FROM_HERESY_CARD_GREAT_BLOOD_SACRIFICE.title": "Great Blood Sacrifice",
+  "GUEST_FROM_HERESY_CARD_GREAT_BLOOD_SACRIFICE.description": "Gain {Energy:energyIcons()}. Draw {Cards:diff()} cards. Gain [gold]Great Blood Sacrifice[/gold]: You can only play Attack cards for the rest of this turn."
 }

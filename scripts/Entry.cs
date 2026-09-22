@@ -25,6 +25,7 @@ public class Entry
         var assembly = Assembly.GetExecutingAssembly();
         RitsuLibFramework.EnsureGodotScriptsRegistered(assembly, Logger);
         ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
+        Keywords.Synaesthesia.RegisterOutline();
         Logger.Info("Mod initialized!");
     }
 }

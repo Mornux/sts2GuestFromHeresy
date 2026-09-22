@@ -1,0 +1,7 @@
+{
+  "GUEST_FROM_HERESY_POWER_GAZED_POWER.title": "被注视",
+  "GUEST_FROM_HERESY_POWER_GAZED_POWER.description": "洛斯塔法的投影将扭曲你的生命值，并获得额外增益。持续{Amount}回合。",
+  "GUEST_FROM_HERESY_POWER_GAZED_POWER.projection": "洛斯塔法的投影",
+  "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.title": "大血祭",
+  "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.description": "本回合的剩余时间内，你只能使用[gold]攻击牌[/gold]。"
+}

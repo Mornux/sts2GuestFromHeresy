@@ -1,6 +1,22 @@
 {
-  "GUEST_FROM_HERESY_CARD_STRIKE.title": "新月",
-  "GUEST_FROM_HERESY_CARD_STRIKE.description": "造成{Damage:diff()}点伤害。打出时变形为满月。",
-  "GUEST_FROM_HERESY_CARD_DEFEND.title": "满月",
-  "GUEST_FROM_HERESY_CARD_DEFEND.description": "获得{Block:diff()}点[gold]格挡[/gold]。打出时变形为新月。"
+  "GUEST_FROM_HERESY_CARD_ADVENT.title": "降临",
+  "GUEST_FROM_HERESY_CARD_ADVENT.description": "获得{GazedPower:diff()}层[gold]被注视[/gold]。",
+  "GUEST_FROM_HERESY_CARD_INNER_FEAR.title": "内在恐惧",
+  "GUEST_FROM_HERESY_CARD_INNER_FEAR.description": "造成{Damage:diff()}点伤害，施加{VulnerablePower:diff()}层[gold]易伤[/gold]。[gold]通感[/gold]：改为对所有敌人生效。",
+  "GUEST_FROM_HERESY_CARD_CRESCENT.title": "新月",
+  "GUEST_FROM_HERESY_CARD_CRESCENT.description": "造成{Damage:diff()}点伤害。打出时变形为[gold]{IfUpgraded:show:满月+|满月}[/gold]。",
+  "GUEST_FROM_HERESY_CARD_FULL_MOON.title": "满月",
+  "GUEST_FROM_HERESY_CARD_FULL_MOON.description": "获得{Block:diff()}点[gold]格挡[/gold]。打出时变形为[gold]{IfUpgraded:show:新月+|新月}[/gold]。",
+  "GUEST_FROM_HERESY_CARD_ILLUSION.title": "错觉",
+  "GUEST_FROM_HERESY_CARD_ILLUSION.description": "随机复制你抽牌堆中的{Cards:diff()}张牌，置入你的手牌并使它们获得[gold]虚无[/gold]。",
+  "GUEST_FROM_HERESY_CARD_CHAOS_GRIMOIRE.title": "混沌秘典",
+  "GUEST_FROM_HERESY_CARD_CHAOS_GRIMOIRE.description": "抽{Cards:diff()}张牌，这张牌变形为[gold]粘液[/gold]。",
+  "GUEST_FROM_HERESY_CARD_ENTROPIC_METAMORPHOSIS.title": "熵之化形",
+  "GUEST_FROM_HERESY_CARD_ENTROPIC_METAMORPHOSIS.description": "将两张该牌的复制置入你的手牌，抽{Cards:diff()}张牌。",
+  "GUEST_FROM_HERESY_CARD_HOWL_OF_SUFFERING.title": "苦难奔嚎",
+  "GUEST_FROM_HERESY_CARD_HOWL_OF_SUFFERING.description": "你每有一层负面效果，[gold]被注视[/gold]1并抽{Cards:diff()}张牌。",
+  "GUEST_FROM_HERESY_CARD_SHADOW_SHIELD.title": "影子盾",
+  "GUEST_FROM_HERESY_CARD_SHADOW_SHIELD.description": "获得{Block:diff()}点[gold]格挡[/gold]。每当这张牌进入弃牌堆，你获得1层[gold]瓦解[/gold]。",
+  "GUEST_FROM_HERESY_CARD_GREAT_BLOOD_SACRIFICE.title": "大血祭",
+  "GUEST_FROM_HERESY_CARD_GREAT_BLOOD_SACRIFICE.description": "获得{Energy:energyIcons()}，抽{Cards:diff()}张牌。获得[gold]大血祭[/gold]：本回合的剩余时间内你只能使用攻击牌。"
 }
