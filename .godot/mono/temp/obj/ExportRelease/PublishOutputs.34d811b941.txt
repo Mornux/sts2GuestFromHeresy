@@ -1,5 +1,0 @@
-D:\ProjectTwilight\guest-from-heresy\build\guestFromHeresy.dll
-D:\ProjectTwilight\guest-from-heresy\build\guestFromHeresy.deps.json
-D:\ProjectTwilight\guest-from-heresy\build\guestFromHeresy.pdb
-D:\ProjectTwilight\guest-from-heresy\build\GodotSharp.dll
-D:\ProjectTwilight\guest-from-heresy\build\GodotSharpEditor.dll

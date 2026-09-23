@@ -14,9 +14,9 @@ public sealed class SealedGate : ModRelicTemplate
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
     public override RelicAssetProfile AssetProfile => new(
-        IconPath: "res://guestFromHeresy/images/projection/sealed_gate.svg",
-        IconOutlinePath: "res://guestFromHeresy/images/projection/sealed_gate.svg",
-        BigIconPath: "res://guestFromHeresy/images/projection/sealed_gate.svg");
+        IconPath: "res://guestFromHeresy/images/projection/SealedGate_temp.png",
+        IconOutlinePath: "res://guestFromHeresy/images/projection/SealedGate_temp.png",
+        BigIconPath: "res://guestFromHeresy/images/projection/SealedGate_temp.png");
 
     public override Task AfterEnergySpent(CardModel card, int amount)
     {

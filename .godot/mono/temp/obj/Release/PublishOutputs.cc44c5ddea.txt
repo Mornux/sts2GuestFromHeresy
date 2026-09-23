@@ -1,4 +1,0 @@
-D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\bin\Release\publish\guestFromHeresy.dll
-D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\bin\Release\publish\guestFromHeresy.deps.json
-D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\bin\Release\publish\guestFromHeresy.pdb
-D:\ProjectTwilight\guest-from-heresy\.godot\mono\temp\bin\Release\publish\GodotSharp.dll

@@ -28,7 +28,7 @@ public sealed class VoidFragment : ModRelicTemplate
     }
 
     public override RelicAssetProfile AssetProfile => new(
-        IconPath: "res://guestFromHeresy/images/projection/ancient_tome.svg",
-        IconOutlinePath: "res://guestFromHeresy/images/projection/ancient_tome.svg",
-        BigIconPath: "res://guestFromHeresy/images/projection/ancient_tome.svg");
+        IconPath: "res://guestFromHeresy/images/projection/AncientTome_temp.png",
+        IconOutlinePath: "res://guestFromHeresy/images/projection/AncientTome_temp.png",
+        BigIconPath: "res://guestFromHeresy/images/projection/AncientTome_temp.png");
 }

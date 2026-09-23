@@ -9,7 +9,7 @@ namespace guestFromHeresy.RestSites;
 public sealed class ReadAncientTome(Player owner) : ModRestSiteOptionTemplate(owner)
 {
     public override string OptionId => "GUEST_FROM_HERESY_READ_ANCIENT_TOME";
-    public override string CustomIconPath => "res://guestFromHeresy/images/projection/ancient_tome.svg";
+    public override string CustomIconPath => "res://guestFromHeresy/images/projection/AncientTome_temp.png";
     public override LocString Description => new("rest_site_ui",
         $"OPTION_{OptionId}.{(Owner.GetRelic<VoidFragment>() == null ? "description" : "repeat_description")}");
 

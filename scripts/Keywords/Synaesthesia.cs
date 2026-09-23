@@ -1,11 +1,13 @@
 using Godot;
 using guestFromHeresy.Cards;
+using guestFromHeresy.Capabilities;
 using guestFromHeresy.Projection;
 using guestFromHeresy.Scripts;
 using MegaCrit.Sts2.Core.Models;
 using STS2RitsuLib.Content;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Combat;
+using STS2RitsuLib.Models.Capabilities;
 
 namespace guestFromHeresy.Keywords;
 
@@ -22,7 +24,13 @@ public sealed class Synaesthesia
 
     //Use the native playable outline and refresh its color as activation changes.
     public static void RegisterOutline() => ModContentRegistry.For(Entry.ModId)
-        .RegisterCardHandOutline<InnerFear>(card => IsActive(card) && card.IsOwnerPlayPhase() && card.CanPlay()
+        .RegisterCardHandOutline<CardModel>(card => CanEnhance(card) && card.IsOwnerPlayPhase() && card.CanPlay()
             ? new Color(237f / 255f, 200f / 255f, 125f / 255f) : null,
             visibleWhenUnplayable: false);
+
+    private static bool CanEnhance(CardModel card) =>
+        card is BreakFree escape && escape.CanGainExtraBlock
+        || IsActive(card) && (card is InnerFear or ShadowStitching or GloomLash or ReversePosition
+            or HatredField or NightmareFuel or AscendingLaw
+            || card.Capability<SynaestheticGaze>() != null);
 }

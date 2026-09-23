@@ -3,5 +3,15 @@
   "GUEST_FROM_HERESY_POWER_GAZED_POWER.description": "Projection of Lostava will distort your HP and grant additional buffs. Lasts {Amount} turns.",
   "GUEST_FROM_HERESY_POWER_GAZED_POWER.projection": "Projection of Lostava",
   "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.title": "Great Blood Sacrifice",
-  "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.description": "You can only play [gold]Attack[/gold] cards for the rest of this turn."
+  "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.description": "You can only play [gold]Attack[/gold] cards for the rest of this turn.",
+  "GUEST_FROM_HERESY_POWER_DEADLINE_POWER.title": "Deadline",
+  "GUEST_FROM_HERESY_POWER_DEADLINE_POWER.description": "After you play {Amount} more cards, die immediately. Playing [gold]Approaching Deadline[/gold] resets this to 13.",
+  "GUEST_FROM_HERESY_POWER_REVERSAL_POWER.title": "Reversal",
+  "GUEST_FROM_HERESY_POWER_REVERSAL_POWER.description": "The next damage you take will occur {Amount} turns later. That damage is reduced by {Reduction}%.",
+  "GUEST_FROM_HERESY_POWER_REVERSAL_DEBT_POWER.title": "Reversal",
+  "GUEST_FROM_HERESY_POWER_REVERSAL_DEBT_POWER.description": "In {Amount} turns, take {Damage} damage.",
+  "GUEST_FROM_HERESY_POWER_HEX_POWER.title": "Hex",
+  "GUEST_FROM_HERESY_POWER_HEX_POWER.description": "Whenever the caster draws [gold]Hex[/gold], gain {Amount} [gold]Disintegration[/gold].",
+  "GUEST_FROM_HERESY_POWER_JUDGMENT_POWER.title": "Judgment",
+  "GUEST_FROM_HERESY_POWER_JUDGMENT_POWER.description": "Destroyed in {Amount} turns. Each additional [gold]Judgment[/gold] brings destruction forward by 1 turn."
 }

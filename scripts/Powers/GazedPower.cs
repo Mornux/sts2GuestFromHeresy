@@ -18,7 +18,7 @@ public sealed class GazedPower : ModPowerTemplate
     private int _dexterity;
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override string CustomIconPath => "res://guestFromHeresy/images/projection/gazed.svg";
+    public override string CustomIconPath => "res://guestFromHeresy/images/projection/Gazed_temp.png";
     public override string CustomBigIconPath => CustomIconPath;
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)

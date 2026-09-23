@@ -19,7 +19,7 @@ public sealed class GreatBloodSacrifice : ModCardTemplate
         BetaPortraitPath: "res://guestFromHeresy/images/cards/GreatBloodSacrifice.png");
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(4), new CardsVar(4)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
-        [EnergyHoverTip, HoverTipFactory.FromPower<GreatBloodSacrificePower>()];
+        [EnergyHoverTip];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

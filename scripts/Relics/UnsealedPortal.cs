@@ -12,9 +12,9 @@ public sealed class UnsealedPortal : ModRelicTemplate
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
     public override RelicAssetProfile AssetProfile => new(
-        IconPath: "res://guestFromHeresy/images/projection/unsealed_portal.svg",
-        IconOutlinePath: "res://guestFromHeresy/images/projection/unsealed_portal.svg",
-        BigIconPath: "res://guestFromHeresy/images/projection/unsealed_portal.svg");
+        IconPath: "res://guestFromHeresy/images/projection/UnsealedPortal_temp.png",
+        IconOutlinePath: "res://guestFromHeresy/images/projection/UnsealedPortal_temp.png",
+        BigIconPath: "res://guestFromHeresy/images/projection/UnsealedPortal_temp.png");
 
     public override Task AfterEnergySpent(CardModel card, int amount)
     {

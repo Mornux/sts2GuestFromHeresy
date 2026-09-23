@@ -3,5 +3,15 @@
   "GUEST_FROM_HERESY_POWER_GAZED_POWER.description": "洛斯塔法的投影将扭曲你的生命值，并获得额外增益。持续{Amount}回合。",
   "GUEST_FROM_HERESY_POWER_GAZED_POWER.projection": "洛斯塔法的投影",
   "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.title": "大血祭",
-  "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.description": "本回合的剩余时间内，你只能使用[gold]攻击牌[/gold]。"
+  "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.description": "本回合的剩余时间内，你只能使用[gold]攻击牌[/gold]。",
+  "GUEST_FROM_HERESY_POWER_DEADLINE_POWER.title": "死线",
+  "GUEST_FROM_HERESY_POWER_DEADLINE_POWER.description": "你再打出{Amount}张牌后会立即死亡。打出[gold]死线逼近[/gold]会将死线重置为13。",
+  "GUEST_FROM_HERESY_POWER_REVERSAL_POWER.title": "逆序",
+  "GUEST_FROM_HERESY_POWER_REVERSAL_POWER.description": "下一次受到的伤害会在{Amount}回合后触发。该次伤害减少{Reduction}%。",
+  "GUEST_FROM_HERESY_POWER_REVERSAL_DEBT_POWER.title": "逆序",
+  "GUEST_FROM_HERESY_POWER_REVERSAL_DEBT_POWER.description": "{Amount}回合后受到{Damage}点伤害。",
+  "GUEST_FROM_HERESY_POWER_HEX_POWER.title": "下咒",
+  "GUEST_FROM_HERESY_POWER_HEX_POWER.description": "每当施咒者抽到[gold]下咒[/gold]时，获得{Amount}层[gold]瓦解[/gold]。",
+  "GUEST_FROM_HERESY_POWER_JUDGMENT_POWER.title": "审判",
+  "GUEST_FROM_HERESY_POWER_JUDGMENT_POWER.description": "{Amount}个回合后被消灭。再次受到[gold]审判[/gold]时，将消灭时间提前1回合。"
 }
