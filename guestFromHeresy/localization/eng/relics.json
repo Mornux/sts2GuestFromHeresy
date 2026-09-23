@@ -7,5 +7,17 @@
   "GUEST_FROM_HERESY_RELIC_SEALED_GATE.flavor": "Behind the door, a page turns.",
   "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.title": "Unsealed Portal",
   "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.description": "During this combat, each [gold]Energy[/gold] spent grants Projection of Lostava 2 Max HP and heals it for 2 HP.",
-  "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.flavor": "The door is open. The gaze never ceased."
+  "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.flavor": "The door is open. The gaze never ceased.",
+  "GUEST_FROM_HERESY_RELIC_SECRET_FEAST_CHALICE.title": "Secret Feast Chalice",
+  "GUEST_FROM_HERESY_RELIC_SECRET_FEAST_CHALICE.description": "The first card you play each combat is played one additional time when you first become [gold]Gazed[/gold].",
+  "GUEST_FROM_HERESY_RELIC_SECRET_FEAST_CHALICE.flavor": "",
+  "GUEST_FROM_HERESY_RELIC_MOON_PHASE_INSTRUMENT.title": "Moon Phase Instrument",
+  "GUEST_FROM_HERESY_RELIC_MOON_PHASE_INSTRUMENT.description": "At the start of each combat, upgrade all [gold]Crescents[/gold] and [gold]Full Moons[/gold] in your hand.",
+  "GUEST_FROM_HERESY_RELIC_MOON_PHASE_INSTRUMENT.flavor": "",
+  "GUEST_FROM_HERESY_RELIC_MOON_DUST_NODULE.title": "Moon Dust Nodule",
+  "GUEST_FROM_HERESY_RELIC_MOON_DUST_NODULE.description": "Every 3 [gold]Moon Phase[/gold] cards you play, gain 1 [gold]Strength[/gold] and 1 [gold]Dexterity[/gold] for this combat.",
+  "GUEST_FROM_HERESY_RELIC_MOON_DUST_NODULE.flavor": "",
+  "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.title": "Shadow Missile Nest",
+  "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.description": "At the start of each combat, add 3 [gold]Shadow Missiles[/gold] to your hand.",
+  "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.flavor": ""
 }

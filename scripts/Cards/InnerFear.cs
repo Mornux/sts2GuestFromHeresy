@@ -20,8 +20,8 @@ public sealed class InnerFear : ModCardTemplate
     public InnerFear() : base(0, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy, true) { }
 
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: "res://guestFromHeresy/images/cards/InnerFear.png",
-        BetaPortraitPath: "res://guestFromHeresy/images/cards/InnerFear.png");
+        PortraitPath: "res://guestFromHeresy/images/cards/TempImage.png",
+        BetaPortraitPath: "res://guestFromHeresy/images/cards/TempImage.png");
 
     public override TargetType TargetType => Synaesthesia.IsActive(this) ? TargetType.AllEnemies : TargetType.AnyEnemy;
     protected override bool ShouldGlowGoldInternal => Synaesthesia.IsActive(this);

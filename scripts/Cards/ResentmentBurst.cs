@@ -25,7 +25,7 @@ public sealed class ResentmentBurst() : TemporaryArtSkill(2, CardRarity.Rare)
             foreach (var creature in combat.Creatures.ToArray())
             {
                 if (creature.IsDead || creature.GetPower<DisintegrationPower>() is not { Amount: > 0 } power) continue;
-                await CreatureCmd.Damage(choiceContext, creature, power.Amount, ValueProp.Unpowered, creature, null);
+                await guestFromHeresy.Powers.DisintegrationTriggers.Trigger(choiceContext, power);
             }
         }
     }

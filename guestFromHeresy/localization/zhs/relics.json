@@ -7,5 +7,17 @@
   "GUEST_FROM_HERESY_RELIC_SEALED_GATE.flavor": "门后传来翻页的声音。",
   "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.title": "解禁传送门",
   "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.description": "本场战斗中每消耗1点[gold]能量[/gold]，使洛斯塔法的投影获得2点最大生命值。",
-  "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.flavor": "门已敞开。注视从未停止。"
+  "GUEST_FROM_HERESY_RELIC_UNSEALED_PORTAL.flavor": "门已敞开。注视从未停止。",
+  "GUEST_FROM_HERESY_RELIC_SECRET_FEAST_CHALICE.title": "秘宴之杯",
+  "GUEST_FROM_HERESY_RELIC_SECRET_FEAST_CHALICE.description": "每场战斗打出的第一张牌会在第一次[gold]被注视[/gold]时额外打出一次。",
+  "GUEST_FROM_HERESY_RELIC_SECRET_FEAST_CHALICE.flavor": "",
+  "GUEST_FROM_HERESY_RELIC_MOON_PHASE_INSTRUMENT.title": "月相仪",
+  "GUEST_FROM_HERESY_RELIC_MOON_PHASE_INSTRUMENT.description": "每场战斗开始时，升级你手牌中的所有[gold]新月[/gold]和[gold]满月[/gold]。",
+  "GUEST_FROM_HERESY_RELIC_MOON_PHASE_INSTRUMENT.flavor": "",
+  "GUEST_FROM_HERESY_RELIC_MOON_DUST_NODULE.title": "月尘结核",
+  "GUEST_FROM_HERESY_RELIC_MOON_DUST_NODULE.description": "每当你使用3张[gold]月相[/gold]牌，在本场战斗中获得1点[gold]力量[/gold]和1点[gold]敏捷[/gold]。",
+  "GUEST_FROM_HERESY_RELIC_MOON_DUST_NODULE.flavor": "",
+  "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.title": "暗影弹巢",
+  "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.description": "每场战斗开始时，将3张[gold]暗影导弹[/gold]置入你的手牌。",
+  "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.flavor": ""
 }
