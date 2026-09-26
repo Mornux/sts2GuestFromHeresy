@@ -12,9 +12,10 @@ namespace guestFromHeresy.Cards;
 public abstract class TemporaryArtAttack(int cost, CardRarity rarity, TargetType target = TargetType.AnyEnemy)
     : ModCardTemplate(cost, CardType.Attack, rarity, target, true)
 {
+    protected virtual string PortraitName => "TempImage";
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: "res://guestFromHeresy/images/cards/TempImage.png",
-        BetaPortraitPath: "res://guestFromHeresy/images/cards/TempImage.png");
+        PortraitPath: $"res://guestFromHeresy/images/cards/{PortraitName}.png",
+        BetaPortraitPath: $"res://guestFromHeresy/images/cards/{PortraitName}.png");
 
     protected AttackCommand Attack(decimal damage, CardPlay play, bool all = false, int hits = 1)
     {

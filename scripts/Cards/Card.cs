@@ -24,7 +24,7 @@ public class Crescent : MoonPhaseCard
 
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike, CardTags.MoonPhase];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move)];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<FullMoon>(IsUpgraded)];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [CardTags.MoonPhaseHoverTip, HoverTipFactory.FromCard<FullMoon>(IsUpgraded)];
     protected override CardModel CreateOtherPhase() => CardScope!.CreateCard<FullMoon>(Owner);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -55,7 +55,7 @@ public class FullMoon : MoonPhaseCard
     public override bool GainsBlock => true;
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend, CardTags.MoonPhase];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5m, ValueProp.Move)];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<Crescent>(IsUpgraded)];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [CardTags.MoonPhaseHoverTip, HoverTipFactory.FromCard<Crescent>(IsUpgraded)];
     protected override CardModel CreateOtherPhase() => CardScope!.CreateCard<Crescent>(Owner);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

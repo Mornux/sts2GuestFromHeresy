@@ -26,6 +26,7 @@ public class Entry
         RitsuLibFramework.EnsureGodotScriptsRegistered(assembly, Logger);
         ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
         Keywords.Synaesthesia.RegisterOutline();
+        RitsuLibFramework.RegisterHealthBarForecast<UI.DisintegrationHealthBarForecast>(ModId, "Disintegration");
         Logger.Info("Mod initialized!");
     }
 }

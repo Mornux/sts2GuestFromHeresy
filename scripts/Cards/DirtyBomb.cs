@@ -21,6 +21,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class DirtyBomb() : TemporaryArtAttack(0, CardRarity.Common)
 {
+    protected override string PortraitName => nameof(DirtyBomb);
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>()];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)

@@ -21,6 +21,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class DimBarrage() : TemporaryArtAttack(1, CardRarity.Uncommon)
 {
+    protected override string PortraitName => nameof(DimBarrage);
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CalculationBaseVar(0m), new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => PileType.Exhaust.GetPile(card.Owner).Cards.Count(c => c is ShadowMissile))];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<ShadowMissile>(IsUpgraded)];

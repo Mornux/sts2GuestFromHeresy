@@ -1,0 +1,17 @@
+{
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.aromaPrinciple": "Something whispers behind the veil.",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.banter.alive.endTurnPing": "The ritual pauses. They are still watching.",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.banter.dead.endTurnPing": "The door... finally closes.",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.cardsModifierDescription": "Beyond Visitor cards can now appear in rewards and shops.",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.cardsModifierTitle": "Beyond Visitor Cards",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.description": "Claims to control everything, and is fleeing control.",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.eventDeathPrevention": "It bleeds in my place.",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.goldMonologue": "Mortal gold, a medium for peering beyond the veil.",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.possessiveAdjective": "their",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.pronounObject": "them",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.pronounPossessive": "theirs",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.pronounSubject": "they",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.title": "Beyond Visitor",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.titleObject": "Beyond Visitor",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.unlockText": "Complete a run with [pink]{Prerequisite}[/pink] to unlock this character."
+}

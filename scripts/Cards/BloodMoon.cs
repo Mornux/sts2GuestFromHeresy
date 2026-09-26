@@ -21,6 +21,8 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class BloodMoon() : TemporaryArtAttack(1, CardRarity.Common)
 {
+    protected override string PortraitName => nameof(BloodMoon);
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [CardTags.MoonPhaseHoverTip];
     protected override HashSet<CardTag> CanonicalTags => [CardTags.MoonPhase];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move), new CalculationBaseVar(0m), new CalculationExtraVar(1m),
         new CalculatedVar("Hits").WithMultiplier((card, _) => CombatManager.Instance.History.CardPlaysFinished.Count(e => e.CardPlay.Card.Owner == card.Owner && e.CardPlay.Card is Crescent or FullMoon))];

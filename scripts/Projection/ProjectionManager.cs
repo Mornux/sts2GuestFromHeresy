@@ -4,6 +4,7 @@ using guestFromHeresy.Relics;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace guestFromHeresy.Projection;
 
@@ -57,6 +58,30 @@ public static class ProjectionManager
     public static void ProjectionGainMaxHp(Player player, int amount) => Get(player).GainMaxHp(amount);
     //Heal the player's current projection and return the HP restored without applying Gazed.
     public static int Heal(Player player, int amount) => Get(player).Heal(amount);
+
+    // Shared by redirected damage and cards that explicitly pay projection HP.
+    public static int LoseHpInternal(Player player, decimal amount)
+    {
+        if (!Supports(player)) return 0;
+        var state = Get(player);
+        int lost = state.TakeDamage(amount);
+        player.Creature.GetPower<BloodDebtPower>()?.NotifyProjectionLoss(lost);
+        if (state.CurrentHp == 0 && player.Creature.GetPower<GazedPower>() is { } gazed)
+        {
+            gazed.RemoveProjectionBonuses();
+            gazed.SetAmount(0, true);
+            gazed.RemoveInternal();
+        }
+        return lost;
+    }
+
+    public static async Task<int> LoseHp(PlayerChoiceContext context, Player player, decimal amount)
+    {
+        int lost = LoseHpInternal(player, amount);
+        if (player.Creature.GetPower<BloodDebtPower>() is { } bloodDebt)
+            await bloodDebt.FlushProjectionLoss(context);
+        return lost;
+    }
 
     
     private sealed class CombatProjection

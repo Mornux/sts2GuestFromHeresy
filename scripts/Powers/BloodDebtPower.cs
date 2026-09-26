@@ -25,6 +25,18 @@ namespace guestFromHeresy.Powers;
 public sealed class BloodDebtPower : TemporaryIconPower
 {
     private decimal _lastHp;
+    private decimal _pendingProjectionLoss;
+
+    public void NotifyProjectionLoss(int amount) => _pendingProjectionLoss += Math.Max(0, amount);
+
+    public async Task FlushProjectionLoss(PlayerChoiceContext context)
+    {
+        decimal lost = _pendingProjectionLoss;
+        _pendingProjectionLoss = 0m;
+        if (lost > 0 && Owner.IsAlive && Owner.CombatState is { } combat)
+            await PowerCmd.Apply<DisintegrationPower>(context, combat.HittableEnemies, lost * Amount, Owner, null);
+    }
+
     public override Task AfterApplied(Creature? applier, CardModel? source)
     {
         _lastHp = Owner.CurrentHp;
@@ -33,9 +45,10 @@ public sealed class BloodDebtPower : TemporaryIconPower
     public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
         if (creature != Owner) return;
-        // Projection damage also fires this hook; only real HP changes count.
         decimal lost = Math.Max(0m, _lastHp - Owner.CurrentHp);
         _lastHp = Owner.CurrentHp;
+        lost += _pendingProjectionLoss;
+        _pendingProjectionLoss = 0m;
         if (lost > 0 && Owner.IsAlive && Owner.CombatState is { } combat)
             await PowerCmd.Apply<DisintegrationPower>(new ThrowingPlayerChoiceContext(), combat.HittableEnemies, lost * Amount, Owner, null);
     }

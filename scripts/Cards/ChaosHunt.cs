@@ -21,6 +21,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class ChaosHunt() : SynaestheticAttack(3, CardRarity.Uncommon)
 {
+    protected override string PortraitName => nameof(ChaosHunt);
     public override TargetType TargetType => Synaesthesia.IsActive(this) ? TargetType.AllEnemies : TargetType.AnyEnemy;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(30m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<GazedPower>(), ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];

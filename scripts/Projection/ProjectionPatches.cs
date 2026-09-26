@@ -49,18 +49,18 @@ internal static class ProjectionDamagePatch
     //Route Gazed damage to the projection, clear it on break and discard overflow; otherwise lose HP normally.
     public static DamageResult LoseHp(Creature creature, decimal amount, ValueProp props)
     {
-        if (!ProjectionManager.Supports(creature.Player) || !ProjectionManager.IsGazed(creature.Player!))
+        if (!ProjectionManager.Supports(creature.Player))
             return creature.LoseHpInternal(amount, props);
-
-        var state = ProjectionManager.Get(creature.Player!);
-        int lost = state.TakeDamage(amount);
-        if (state.CurrentHp == 0)
+        bool gazed = ProjectionManager.IsGazed(creature.Player!);
+        if (!gazed)
         {
-            var gazed = creature.GetPower<GazedPower>()!;
-            gazed.RemoveProjectionBonuses();
-            gazed.SetAmount(0, true);
-            gazed.RemoveInternal();
+            var transfer = creature.GetPower<EctopicPainPower>();
+            if (transfer == null || amount < 1m || ProjectionManager.Get(creature.Player!).CurrentHp <= 0)
+                return creature.LoseHpInternal(amount, props);
+            transfer.SetAmount(transfer.Amount - 1, true);
+            if (transfer.Amount <= 0) transfer.RemoveInternal();
         }
+        int lost = ProjectionManager.LoseHpInternal(creature.Player!, amount);
         //Preserve hit triggers without reporting the real player dead or forwarding overkill.
         return new DamageResult(creature, props) { UnblockedDamage = lost };
     }

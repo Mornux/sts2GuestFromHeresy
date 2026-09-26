@@ -21,6 +21,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class AtrocityOptimization() : SynaestheticAttack(1, CardRarity.Common)
 {
+    protected override string PortraitName => nameof(AtrocityOptimization);
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)

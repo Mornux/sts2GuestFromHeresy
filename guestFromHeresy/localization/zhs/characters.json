@@ -1,0 +1,17 @@
+{
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.aromaPrinciple": "……帷幕后，还有什么在低语。",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.banter.alive.endTurnPing": "仪式暂歇。祂们仍在注视。",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.banter.dead.endTurnPing": "门……终于合上了。",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.cardsModifierDescription": "彼界来客的卡牌现在会出现在奖励和商店中。",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.cardsModifierTitle": "彼界来客卡牌",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.description": "自称操纵一切的人，正在逃离操纵。",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.eventDeathPrevention": "祂来替我流血。",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.goldMonologue": "凡俗的金子，也能换来窥视彼界的媒介。",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.possessiveAdjective": "他的",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.pronounObject": "他",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.pronounPossessive": "他的",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.pronounSubject": "他",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.title": "彼界来客",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.titleObject": "彼界来客",
+  "GUEST_FROM_HERESY_CHARACTER_CHARACTER.unlockText": "用[pink]{Prerequisite}[/pink]进行一局游戏来解锁这个角色。"
+}

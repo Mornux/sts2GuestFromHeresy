@@ -11,10 +11,10 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class BloodDebt() : TemporaryArtPower(2, CardRarity.Common)
+public sealed class BloodDebt() : TemporaryArtPower(1, CardRarity.Common)
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<MegaCrit.Sts2.Core.Models.Powers.DisintegrationPower>()];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) =>
         PowerCmd.Apply<BloodDebtPower>(context, Owner.Creature, 1m, Owner.Creature, this);
-    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
+    protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);
 }

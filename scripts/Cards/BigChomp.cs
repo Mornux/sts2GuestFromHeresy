@@ -13,6 +13,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class BigChomp() : TemporaryArtPower(3, CardRarity.Uncommon)
 {
+    protected override string PortraitName => nameof(BigChomp);
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<GazedPower>()];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)

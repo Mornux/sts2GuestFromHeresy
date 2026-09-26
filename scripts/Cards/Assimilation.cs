@@ -20,15 +20,10 @@ public sealed class Assimilation() : ModCardTemplate(-1, CardType.Status, CardRa
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: "res://guestFromHeresy/images/cards/TempImage.png",
-        BetaPortraitPath: "res://guestFromHeresy/images/cards/TempImage.png");
+        PortraitPath: "res://guestFromHeresy/images/cards/Assimilation.png",
+        BetaPortraitPath: "res://guestFromHeresy/images/cards/Assimilation.png");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, CardKeyword.Unplayable];
-    public static bool CanCopy(PowerModel power) => power.Type == PowerType.Buff && power.Amount > 0
-        // These powers control monster phases, summons, theft, or monster-only targets.
-        && power is not (AdaptablePower or AsleepPower or BurrowedPower or EscapeArtistPower
-            or FlutterPower or IllusionPower or InfestedPower or RampartPower or RavenousPower
-            or ReattachPower or SandpitPower or SlumberPower or SteamEruptionPower or StockPower
-            or SurprisePower or HeistPower or SwipePower or ThieveryPower or WitheringPresencePower);
+    public static bool CanCopy(PowerModel power) => power.Type == PowerType.Buff && power.Amount > 0;
 
     public override async Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
     {

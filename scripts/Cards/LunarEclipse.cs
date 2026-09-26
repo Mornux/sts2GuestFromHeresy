@@ -23,7 +23,7 @@ public sealed class LunarEclipse() : TemporaryArtAttack(1, CardRarity.Common)
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTags.MoonPhase];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<Crescent>(), HoverTipFactory.FromCard<FullMoon>()];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [CardTags.MoonPhaseHoverTip, HoverTipFactory.FromCard<Crescent>(), HoverTipFactory.FromCard<FullMoon>()];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         await Attack(DynamicVars.Damage.BaseValue, play).Execute(context);

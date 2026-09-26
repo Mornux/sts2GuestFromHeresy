@@ -21,15 +21,17 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class ShadowMissile() : SynaestheticAttack(0, CardRarity.Token)
 {
+    protected override string PortraitName => nameof(ShadowMissile);
+    internal bool RuneTargetsAttacker { get; set; }
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
-    public override TargetType TargetType => Synaesthesia.IsActive(this) ? TargetType.AllEnemies : TargetType.AnyEnemy;
+    public override TargetType TargetType => !RuneTargetsAttacker && Synaesthesia.IsActive(this) ? TargetType.AllEnemies : TargetType.AnyEnemy;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal, CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(2m, ValueProp.Move), new PowerVar<DisintegrationPower>(2m)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>(), ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        bool active = Synaesthesia.IsActive(this);
+        bool active = !RuneTargetsAttacker && Synaesthesia.IsActive(this);
         var targets = active ? CombatState!.HittableEnemies.ToArray() : new[] { play.Target! };
         await Attack(DynamicVars.Damage.BaseValue, play, active).Execute(context);
         await PowerCmd.Apply<DisintegrationPower>(context, targets.Where(t => t.IsAlive), DynamicVars["DisintegrationPower"].BaseValue, Owner.Creature, this);
