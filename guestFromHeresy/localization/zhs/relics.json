@@ -1,6 +1,6 @@
 {
   "GUEST_FROM_HERESY_RELIC_VOID_FRAGMENT.title": "虚空残卷",
-  "GUEST_FROM_HERESY_RELIC_VOID_FRAGMENT.description": "每层：洛斯塔法的投影在每场战斗的初始生命值增加5。被注视期间额外获得1点力量和1点敏捷。",
+  "GUEST_FROM_HERESY_RELIC_VOID_FRAGMENT.description": "获得后，每次进入休息处自动增加1层。每层：洛斯塔法的投影在每场战斗的初始生命值增加3。被注视期间额外获得1点力量和1点敏捷。",
   "GUEST_FROM_HERESY_RELIC_VOID_FRAGMENT.flavor": "残缺的文字，指向无尽的虚空。",
   "GUEST_FROM_HERESY_RELIC_SEALED_GATE.title": "封印之门",
   "GUEST_FROM_HERESY_RELIC_SEALED_GATE.description": "本场战斗中每消耗1点[gold]能量[/gold]，使洛斯塔法的投影获得1点最大生命值。",

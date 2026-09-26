@@ -8,7 +8,7 @@ public sealed class ProjectionState
     //Calculate starting maximum HP from growth stacks and create a fully healed projection.
     public ProjectionState(int readings)
     {
-        MaxHp = 1 + 5 * readings;
+        MaxHp = 1 + 3 * readings;
         CurrentHp = MaxHp;
     }
 

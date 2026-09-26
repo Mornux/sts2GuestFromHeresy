@@ -1,7 +1,7 @@
 {
   "GUEST_FROM_HERESY_POWER_GAZED_POWER.title": "Gazed",
-  "GUEST_FROM_HERESY_POWER_GAZED_POWER.description": "Projection of Lostava will distort your HP and grant additional buffs. Lasts {Amount} turns.",
-  "GUEST_FROM_HERESY_POWER_GAZED_POWER.projection": "Projection of Lostava",
+  "GUEST_FROM_HERESY_POWER_GAZED_POWER.description": "Projection of LOSTAVA will distort your HP and grant additional buffs. Lasts {Amount} turns.",
+  "GUEST_FROM_HERESY_POWER_GAZED_POWER.projection": "Projection of LOSTAVA",
   "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.title": "Great Blood Sacrifice",
   "GUEST_FROM_HERESY_POWER_GREAT_BLOOD_SACRIFICE_POWER.description": "You can only play [gold]Attack[/gold] cards for the rest of this turn.",
   "GUEST_FROM_HERESY_POWER_DEADLINE_POWER.title": "Deadline",
@@ -39,7 +39,7 @@
   "GUEST_FROM_HERESY_POWER_HATEFIRE_POWER.title": "Hatefire",
   "GUEST_FROM_HERESY_POWER_HATEFIRE_POWER.description": "All Disintegration triggers {Amount} additional times.",
   "GUEST_FROM_HERESY_POWER_BLOOD_DEBT_POWER.title": "Blood Debt",
-  "GUEST_FROM_HERESY_POWER_BLOOD_DEBT_POWER.description": "Whenever you or Lostafa's projection loses HP, apply that much Disintegration to ALL enemies {Amount} times.",
+  "GUEST_FROM_HERESY_POWER_BLOOD_DEBT_POWER.description": "Whenever you or Projection of LOSTAVA loses HP, apply that much Disintegration to ALL enemies {Amount} times.",
   "GUEST_FROM_HERESY_POWER_PERPETUAL_DECAY_POWER.title": "Perpetual Decay",
   "GUEST_FROM_HERESY_POWER_PERPETUAL_DECAY_POWER.description": "Gain 1 Gazed whenever Disintegration stacks triggered across all creatures reach the threshold.",
   "GUEST_FROM_HERESY_POWER_ETERNAL_WITHERING_POWER.title": "Eternal Withering",
@@ -65,5 +65,5 @@
   "GUEST_FROM_HERESY_POWER_NIGHT_BLINDNESS_POWER.title": "Night Blindness",
   "GUEST_FROM_HERESY_POWER_NIGHT_BLINDNESS_POWER.description": "The first time you play a Moon Phase card each turn, draw {Amount} card(s).",
   "GUEST_FROM_HERESY_POWER_ECTOPIC_PAIN_POWER.title": "Ectopic Pain",
-  "GUEST_FROM_HERESY_POWER_ECTOPIC_PAIN_POWER.description": "The next {Amount} time(s) you would lose HP, Rostapha’s Projection loses that much HP instead."
+  "GUEST_FROM_HERESY_POWER_ECTOPIC_PAIN_POWER.description": "The next {Amount} time(s) you would lose HP, Projection of LOSTAVA loses that much HP instead."
 }

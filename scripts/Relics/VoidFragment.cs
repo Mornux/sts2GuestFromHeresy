@@ -1,4 +1,5 @@
 using guestFromHeresy.Pools;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using STS2RitsuLib.Interop.AutoRegistration;
@@ -25,6 +26,27 @@ public sealed class VoidFragment : ModRelicTemplate
             _stacks = Math.Max(1, value);
             InvokeDisplayAmountChanged();
         }
+    }
+
+    [SavedProperty]
+    public int LastGrowthFloor { get; set; } = -1;
+
+    public override Task AfterObtained()
+    {
+        LastGrowthFloor = Owner.RunState.TotalFloor;
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterRoomEntered(AbstractRoom room)
+    {
+        int floor = Owner.RunState.TotalFloor;
+        if (room is RestSiteRoom && LastGrowthFloor != floor)
+        {
+            LastGrowthFloor = floor;
+            Stacks++;
+            Flash();
+        }
+        return Task.CompletedTask;
     }
 
     public override RelicAssetProfile AssetProfile => new(

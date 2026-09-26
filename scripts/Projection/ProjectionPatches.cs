@@ -97,7 +97,8 @@ internal static class ProjectionRestSitePatch
     //Add Read Ancient Tome to this mod character's rest-site options without duplicates.
     private static void Postfix(Player player, List<RestSiteOption> __result)
     {
-        if (ProjectionManager.Supports(player) && !__result.OfType<ReadAncientTome>().Any())
+        if (ProjectionManager.Supports(player) && player.GetRelic<guestFromHeresy.Relics.VoidFragment>() == null
+            && !__result.OfType<ReadAncientTome>().Any())
             __result.Add(new ReadAncientTome(player));
     }
 }

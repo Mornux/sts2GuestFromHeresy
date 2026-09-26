@@ -1,20 +1,100 @@
 {
-  "DARV.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "啊……彼界的客人。你的影子比你先到了。\n别碰那本书，它会记住你的名字。",
-  "DARV.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "又来了？还是说，是某个更深的东西借你的眼睛看我？",
-  "NEOW.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "……醒来……不，别醒来……\n门外的东西已经听见你的心跳……",
-  "NEOW.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "……你逃离的不是命运……是注视你的那一只眼睛……",
-  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "你身上有一种不属于此处的噪音。\n它在你的骨头里排列星辰。",
-  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "别回答那道声音。它会用你的声音继续说下去。",
-  "OROBAS.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "我看见你曾经的形状，也看见你将要失去的形状。",
-  "OROBAS.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "每一件宝物都在等待主人，而有些主人正在等待被打开。",
-  "PAEL.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "你从星光的背面走来。那里没有路，只有被遗忘的方向。",
-  "PAEL.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "若你听见深处的歌，请装作那不是你的名字。",
+  "DARV.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "啊……彼界的客人。你的影子比你先到了.",
+  "DARV.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-1r.ancient": "我没有把你的名字告诉它。",
+  "DARV.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-2r.ancient": "你最好也没有。",
+  
+  "DARV.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "这本书刚才还是空白。你一进来，它就多了一页。",
+  "DARV.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-1r.ancient": "……上面写着你已经离开了。",
+  
+  "DARV.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.2-0r.ancient": "又来了？",
+  "DARV.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.2-1r.ancient": "还是说，是某个更深的东西借你的眼睛看我？",
+
+  
+  
+  "NEOW.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "……又一个……",
+  "NEOW.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-1r.ancient": "不。数目没有增加。",
+  "NEOW.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-2r.ancient": "你是从哪里进来的……？",
+  
+  "NEOW.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "……我能把你带回来……",
+  "NEOW.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-1r.ancient": "可每一次，回来的地方都离这里远一点……",
+
+  "NEOW.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.2-0r.ancient": "……醒来……不，别醒来……",
+  "NEOW.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.2-1r.ancient": "门外的东西已经听见你的心跳……",
+  
+
+  
+  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "先别说话。",
+  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-1r.ancient": "刚才替你回答的那个声音，还没有停。",
+  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-2r.ancient": "别回答那道声音。它会用你的声音继续说下去。",
+  
+  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "这里没有人认识你的来处。",
+  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-1r.ancient": "……也没有人知道跟着你的那个东西。",
+  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-2r.ancient": "你说出它的名字时，你的声音变成了阴影。",
+  
+  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.2-0r.ancient": "你身上有一种不属于此处的噪音。",
+  "NONUPEIPE.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.2-1r.ancient": "它在你的思维里编织星辰。",
+
+
+  
+  
+  "OROBAS.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "你来取属于你的东西？",
+  "OROBAS.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-1r.ancient": "真奇怪！真奇怪！这些东西都说曾经属于你。",
+  
+  "OROBAS.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "快一点！快一点！把手伸出来。另一只！",
+  "OROBAS.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-1r.ancient": "……不是藏在袖子里的那只！",
+  
+  "OROBAS.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.2-0r.ancient": "我看见你曾经的形状了！",
+  "OROBAS.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.2-1r.ancient": "有意思！有意思！",
+  "OROBAS.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.2-2r.ancient": "我也看见你要失去的形状了！",
+  
+  
+  
+  "PAEL.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "站近些。",
+  "PAEL.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-1r.ancient": "你的轮廓留在门外了。",
+  "PAEL.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-2r.ancient": "我不喜欢同两个人谈一桩事。",
+  
+  "PAEL.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "我记得你。",
+  "PAEL.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-1r.ancient": "一个和你同样的存在到来过。",
+  "PAEL.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-2r.ancient": "如果你听见前路有呼唤你名字的歌，",
+  "PAEL.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-3r.ancient": "请装作那不是你的名字。",
+
+
+
   "TANX.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "嘿，陌生的家伙！你的影子刚才眨眼了吗？",
-  "TANX.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "别担心，我没看到你身后的东西……大概。",
-  "TEZCATARA.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "你携带着未完成的因果。它们在你身后互相吞食。",
-  "TEZCATARA.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "不要让那扇门知道你已经学会了开门。",
-  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "你试图逃离操纵，却仍在我设计的路径上行走。",
-  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "有趣。一个自称作者的囚徒，正在寻找未被书写的出口。",
-  "VAKUU.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "你的灵魂像一页被水浸透的纸。上面的字还在动。",
-  "VAKUU.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "若你想逃走，就别回头。回头的人会看见自己还在原地。"
+  "TANX.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-1r.ancient": "给，接好了！",
+  "TANX.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-2r.ancient": "……你先别动。东西掉地上了，你的手怎么还在接？",
+  
+  "TANX.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "嘿，今天只算你一个人的价。",
+  "TANX.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-1r.ancient": "后面那个要是问起来，你就说我没看见。",
+  
+  
+  
+  "TEZCATARA.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "你走过的地方并没有留下预兆。",
+  "TEZCATARA.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-1r.ancient": "命运烛火，像是沉入虚空。",
+  "TEZCATARA.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-2r.ancient": "虚空……也许就是虚空……",
+  
+  "TEZCATARA.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "别再往前数数了。",
+  "TEZCATARA.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-1r.ancient": "你携带者未完善的因果。",
+  "TEZCATARA.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-2r.ancient": "它们在你的背后相互吞食。",
+  
+  
+  
+  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "我想我并未为每一位来客预留入口。",
+  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-1r.char": "我来寻找方法，离开来自虚空的枷锁。",
+  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-2r.ancient": "你站的那个位置，在设计上是一堵墙。",
+  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-3r.ancient": "你应该走正门。",
+  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-4r.ancient": "我不欢迎未被邀请的客人。",
+  
+  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "你说自己正在逃离操纵。",
+  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-1r.ancient": "我的思维告诉我，逃离被反噬的命运。",
+  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-2r.ancient": "那么，是谁让你在这里停下来，听我说完这句话？",
+  "THE_ARCHITECT.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-3r.ancient": "无趣。",
+  
+  
+  
+  "VAKUU.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-0r.ancient": "抬头。让我看看借住在这双眼睛后面的东西。",
+  "VAKUU.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.0-1r.ancient": "……我没有叫你也抬头。",
+  
+  "VAKUU.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-0r.ancient": "啊哈，你的身体里住着什么东西。",
+  "VAKUU.talk.GUEST_FROM_HERESY_CHARACTER_CHARACTER.1-1r.ancient": "不过我讨厌同僚。"
 }

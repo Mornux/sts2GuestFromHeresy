@@ -55,15 +55,15 @@ internal static class AssimilationCurlUpReceivePatch
     }
 }
 
-[HarmonyPatch(typeof(PowerModel), nameof(PowerModel.AfterAttack))]
+[HarmonyPatch(typeof(AbstractModel), nameof(AbstractModel.AfterAttack))]
 internal static class AssimilationCurlUpAttackPatch
 {
-    private static bool Prefix(PowerModel __instance, AttackCommand command, ref Task __result)
+    private static bool Prefix(AbstractModel __instance, AttackCommand command, ref Task __result)
     {
-        if (__instance is not CurlUpPower || !__instance.Owner.IsPlayer) return true;
-        __result = __instance.Owner.IsAlive && command.DamageProps.IsPoweredAttack()
-            && command.Results.SelectMany(results => results).Any(result => result.Receiver == __instance.Owner)
-            ? Resolve(__instance) : Task.CompletedTask;
+        if (__instance is not CurlUpPower power || !power.Owner.IsPlayer) return true;
+        __result = power.Owner.IsAlive && command.DamageProps.IsPoweredAttack()
+            && command.Results.SelectMany(results => results).Any(result => result.Receiver == power.Owner)
+            ? Resolve(power) : Task.CompletedTask;
         return false;
     }
     private static async Task Resolve(PowerModel power)
