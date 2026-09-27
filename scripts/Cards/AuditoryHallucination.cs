@@ -2,7 +2,6 @@ using guestFromHeresy.Pools;
 using guestFromHeresy.Powers;
 using guestFromHeresy.Projection;
 using guestFromHeresy.Keywords;
-using guestFromHeresy.Mechanics;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -24,12 +23,14 @@ public sealed class AuditoryHallucination() : TemporaryArtSkill(1, CardRarity.Co
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Missiles", 1m), new CardsVar(1)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<ShadowMissile>()];
-    protected override bool ShouldGlowGoldInternal => IsMutable && CombatState != null && SensoryCardHistory.PlayedMissileThisTurn(this);
+    protected override bool ShouldGlowGoldInternal => IsMutable && CombatState != null && (CombatState != null && CombatManager.Instance.History.CardPlaysFinished.Any(e =>
+            e.CardPlay.Card.Owner == Owner && e.CardPlay.Card is ShadowMissile && e.HappenedThisTurn(CombatState)));
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         for (int i = 0; i < DynamicVars["Missiles"].IntValue; i++)
             await CardPileCmd.AddGeneratedCardToCombat(CardScope!.CreateCard<ShadowMissile>(Owner), PileType.Hand, Owner);
-        if (SensoryCardHistory.PlayedMissileThisTurn(this)) await CardPileCmd.Draw(context, 1m, Owner);
+        if ((CombatState != null && CombatManager.Instance.History.CardPlaysFinished.Any(e =>
+            e.CardPlay.Card.Owner == Owner && e.CardPlay.Card is ShadowMissile && e.HappenedThisTurn(CombatState)))) await CardPileCmd.Draw(context, 1m, Owner);
     }
     protected override void OnUpgrade() => DynamicVars["Missiles"].UpgradeValueBy(1m);
 }

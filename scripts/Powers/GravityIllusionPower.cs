@@ -1,4 +1,3 @@
-using guestFromHeresy.Mechanics;
 using guestFromHeresy.Keywords;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -12,5 +11,4 @@ namespace guestFromHeresy.Powers;
 [RegisterPower]
 public sealed class GravityIllusionPower : TemporaryIconPower
 {
-    public Task OnTransformed() => Owner.IsAlive ? CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null) : Task.CompletedTask;
 }

@@ -1,4 +1,3 @@
-using guestFromHeresy.Mechanics;
 using guestFromHeresy.Keywords;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -15,7 +14,7 @@ public sealed class SensoryOverloadPower : TemporaryIconPower
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Progress", 0m)];
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay play)
     {
-        if (play.Card.Owner.Creature != Owner || !Owner.IsAlive || !SensoryCardHistory.IsZeroCost(play)) return;
+        if (play.Card.Owner.Creature != Owner || !Owner.IsAlive || play.Card.EnergyCost.CostsX || play.Resources.EnergyValue != 0) return;
         var progress = DynamicVars["Progress"];
         progress.BaseValue++;
         if (progress.BaseValue < 3) return;

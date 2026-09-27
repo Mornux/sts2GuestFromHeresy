@@ -1,4 +1,3 @@
-using guestFromHeresy.Mechanics;
 using guestFromHeresy.Keywords;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;

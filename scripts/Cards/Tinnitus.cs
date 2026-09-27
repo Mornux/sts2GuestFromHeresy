@@ -2,7 +2,6 @@ using guestFromHeresy.Pools;
 using guestFromHeresy.Powers;
 using guestFromHeresy.Projection;
 using guestFromHeresy.Keywords;
-using guestFromHeresy.Mechanics;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -24,11 +23,13 @@ public sealed class Tinnitus() : TemporaryArtSkill(0, CardRarity.Common)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1), new PowerVar<DisintegrationPower>(2m)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<ShadowMissile>(), HoverTipFactory.FromPower<DisintegrationPower>()];
-    protected override bool ShouldGlowGoldInternal => IsMutable && CombatState != null && SensoryCardHistory.PlayedMissileThisTurn(this);
+    protected override bool ShouldGlowGoldInternal => IsMutable && CombatState != null && (CombatState != null && CombatManager.Instance.History.CardPlaysFinished.Any(e =>
+            e.CardPlay.Card.Owner == Owner && e.CardPlay.Card is ShadowMissile && e.HappenedThisTurn(CombatState)));
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         await CardPileCmd.Draw(context, 1m, Owner);
-        if (!SensoryCardHistory.PlayedMissileThisTurn(this)) return;
+        if (!(CombatState != null && CombatManager.Instance.History.CardPlaysFinished.Any(e =>
+            e.CardPlay.Card.Owner == Owner && e.CardPlay.Card is ShadowMissile && e.HappenedThisTurn(CombatState)))) return;
         var target = Owner.RunState.Rng.CombatTargets.NextItem(CombatState!.HittableEnemies.ToArray());
         if (target != null) await PowerCmd.Apply<DisintegrationPower>(context, target, DynamicVars["DisintegrationPower"].BaseValue, Owner.Creature, this);
     }
