@@ -2,5 +2,9 @@
   "MOON_PHASE.title": "Moon Phase",
   "MOON_PHASE.description": "This is a Moon Phase card.",
   "SYNAESTHESIA.title": "Synaesthesia",
-  "SYNAESTHESIA.description": "Trigger an additional effect while Gazed."
+  "SYNAESTHESIA.description": "Trigger an additional effect while Gazed.",
+  "ARTIFACT_PART.title": "Artifact Part",
+  "ARTIFACT_PART.description": "Cannot be upgraded. Every 3 Artifact Parts you play, add an artifact combining their effects to your hand.",
+  "SEALED_ARTIFACT.title": "Artifact",
+  "SEALED_ARTIFACT.description": "An artifact that executes its three component effects in order."
 }

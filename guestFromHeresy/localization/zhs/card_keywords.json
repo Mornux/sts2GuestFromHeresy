@@ -2,5 +2,9 @@
   "MOON_PHASE.title": "月相",
   "MOON_PHASE.description": "这是一张月相",
   "SYNAESTHESIA.title": "通感",
-  "SYNAESTHESIA.description": "在被注视时触发额外效果。"
+  "SYNAESTHESIA.description": "在被注视时触发额外效果。",
+  "ARTIFACT_PART.title": "神器零件",
+  "ARTIFACT_PART.description": "无法被升级。每当你使用3张神器零件，将一张兼具它们效果的神器置入你的手牌。",
+  "SEALED_ARTIFACT.title": "神器",
+  "SEALED_ARTIFACT.description": "这是一张神器，依次执行其三个零件的效果。"
 }

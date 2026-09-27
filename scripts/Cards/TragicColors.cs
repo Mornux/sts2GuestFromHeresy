@@ -15,7 +15,7 @@ public sealed class TragicColors() : TemporaryArtSkill(2, CardRarity.Uncommon, T
     protected override string PortraitName => nameof(TragicColors);
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Stacks", 5m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Stacks", 3m)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<DoomPower>(),
          HoverTipFactory.FromPower<DisintegrationPower>(), HoverTipFactory.FromPower<VulnerablePower>(), HoverTipFactory.FromPower<WeakPower>()];

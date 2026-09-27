@@ -18,6 +18,6 @@
   "GUEST_FROM_HERESY_RELIC_MOON_DUST_NODULE.description": "Every 3 [gold]Moon Phase[/gold] cards you play, gain 1 [gold]Strength[/gold] and 1 [gold]Dexterity[/gold] for this combat.",
   "GUEST_FROM_HERESY_RELIC_MOON_DUST_NODULE.flavor": "",
   "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.title": "Shadow Missile Nest",
-  "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.description": "At the start of each combat, add 3 [gold]Shadow Missiles[/gold] to your hand.",
+  "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.description": "At the start of each combat, add 3 [color=#78E0EE]Shadow Missiles[/color] to your hand.",
   "GUEST_FROM_HERESY_RELIC_SHADOW_MISSILE_NEST.flavor": ""
 }

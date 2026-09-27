@@ -26,9 +26,11 @@ public sealed class Echolalia() : TemporaryArtSkill(2, CardRarity.Uncommon)
     {
         base.AddExtraArgsToDescription(description);
         var previous = PreviousCard;
-        description.Add("PreviousCard", previous is null or Echolalia
-            ? new LocString("cards", "GUEST_FROM_HERESY_CARD_ECHOLALIA.noPrevious").GetFormattedText()
-            : previous.Title);
+        var preview = new LocString("cards", previous is null or Echolalia
+            ? "GUEST_FROM_HERESY_CARD_ECHOLALIA.noPrevious"
+            : "GUEST_FROM_HERESY_CARD_ECHOLALIA.hasPrevious");
+        if (previous is not null and not Echolalia) preview.Add("PreviousCard", previous.Title);
+        description.Add("TransformPreview", preview.GetFormattedText());
     }
     public override bool TryModifyEnergyCostInCombatLate(CardModel card, decimal originalCost, out decimal modifiedCost)
     {

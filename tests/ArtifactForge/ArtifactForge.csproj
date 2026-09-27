@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net9.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+<ItemGroup>
+<Reference Include="guestFromHeresy"><HintPath>../../.godot/mono/temp/bin/Debug/guestFromHeresy.dll</HintPath></Reference>
+<Reference Include="sts2"><HintPath>F:/SteamLibrary/steamapps/common/Slay the Spire 2/data_sts2_windows_x86_64/sts2.dll</HintPath></Reference>
+<Reference Include="GodotSharp"><HintPath>F:/SteamLibrary/steamapps/common/Slay the Spire 2/data_sts2_windows_x86_64/GodotSharp.dll</HintPath></Reference>
+<Reference Include="STS2-RitsuLib.Runtime"><HintPath>F:/SteamLibrary/steamapps/common/Slay the Spire 2/mods/STS2-RitsuLib/compat/0.111.0/STS2-RitsuLib.Runtime.dll</HintPath></Reference>
+</ItemGroup></Project>

@@ -30,7 +30,8 @@ public sealed class Synaesthesia
 
     private static bool CanEnhance(CardModel card) =>
         card is BreakFree escape && escape.CanGainExtraBlock
-        || IsActive(card) && (card is Echolalia or InnerFear or ShadowStitching or GloomLash or ReversePosition
+        || IsActive(card) && (card is ArtifactPartCard artifact && artifact.EffectCodes.Contains(6)
+            || card is ForgedMoon or Resonance or Echolalia or InnerFear or ShadowStitching or GloomLash or ReversePosition
             or HatredField or NightmareFuel or AscendingLaw or SynaestheticAttack
             || card.Capability<SynaestheticGaze>() != null || card.Capability<SynaestheticDamage>() != null || card.Capability<SynaestheticFreeCost>() != null);
 }
