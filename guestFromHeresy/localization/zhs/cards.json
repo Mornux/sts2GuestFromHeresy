@@ -127,7 +127,7 @@
   "GUEST_FROM_HERESY_CARD_ETERNAL_WITHERING.title": "永恒枯萎",
   "GUEST_FROM_HERESY_CARD_ETERNAL_WITHERING.description": "每当你使用一张牌，使所有敌人获得{Stacks:diff()}层[gold]瓦解[/gold]。",
   "GUEST_FROM_HERESY_CARD_ASSIMILATION.title": "同化",
-  "GUEST_FROM_HERESY_CARD_ASSIMILATION.description": "每当这张牌进入你的手牌时，使你复制敌人的一个随机增益效果。{HasCopy:cond:\n（已复制{CopiedAmount}层{CopiedPower}）|}",
+  "GUEST_FROM_HERESY_CARD_ASSIMILATION.description": "每当这张牌进入你的手牌时，使你复制敌人的一个随机增益效果对应的向量投影。{HasCopy:cond:\n（已复制{CopiedAmount}层{CopiedPower}）|}",
   "GUEST_FROM_HERESY_CARD_BIG_CHOMP.selectionScreenPrompt": "选择一张技能牌",
   "GUEST_FROM_HERESY_FREE_COST_AFFIX.description": "[gold]通感[/gold]：能耗为0。",
   "GUEST_FROM_HERESY_CARD_DIVINE_STROKE.title": "神来之笔",

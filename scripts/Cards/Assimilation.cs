@@ -1,4 +1,5 @@
 using guestFromHeresy.Pools;
+using guestFromHeresy.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -23,7 +24,7 @@ public sealed class Assimilation() : ModCardTemplate(-1, CardType.Status, CardRa
         PortraitPath: "res://guestFromHeresy/images/cards/Assimilation.png",
         BetaPortraitPath: "res://guestFromHeresy/images/cards/Assimilation.png");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, CardKeyword.Unplayable];
-    public static bool CanCopy(PowerModel power) => power.Type == PowerType.Buff && power.Amount > 0;
+    public static bool CanCopy(PowerModel power) => VectorProjectionRegistry.CanProject(power);
 
     public override async Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
     {
@@ -34,11 +35,11 @@ public sealed class Assimilation() : ModCardTemplate(-1, CardType.Status, CardRa
             .Where(CanCopy).ToArray();
         if (buffs.Length == 0) return;
         var selected = Owner.RunState.Rng.CombatCardSelection.NextItem(buffs)!;
-        var copy = ModelDb.GetById<PowerModel>(selected.Id).ToMutable();
-        int before = Owner.Creature.GetPowerInstances(selected.Id).Sum(p => p.Amount);
+        var copy = VectorProjectionRegistry.Create(selected);
+        int before = Owner.Creature.GetPowerInstances(copy.Id).Sum(p => p.Amount);
         await PowerCmd.Apply(new ThrowingPlayerChoiceContext(), copy, Owner.Creature, selected.Amount, Owner.Creature, this);
-        _copiedPower = selected.Id;
-        _copiedAmount = Math.Max(0, Owner.Creature.GetPowerInstances(selected.Id).Sum(p => p.Amount) - before);
+        _copiedPower = copy.Id;
+        _copiedAmount = Math.Max(0, Owner.Creature.GetPowerInstances(copy.Id).Sum(p => p.Amount) - before);
     }
     protected override void AddExtraArgsToDescription(LocString description)
     {

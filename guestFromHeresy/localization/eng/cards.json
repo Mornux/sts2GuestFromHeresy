@@ -127,7 +127,7 @@
   "GUEST_FROM_HERESY_CARD_ETERNAL_WITHERING.title": "Eternal Withering",
   "GUEST_FROM_HERESY_CARD_ETERNAL_WITHERING.description": "Whenever you play a card, apply {Stacks:diff()} [gold]Disintegration[/gold] to ALL enemies.",
   "GUEST_FROM_HERESY_CARD_ASSIMILATION.title": "Assimilation",
-  "GUEST_FROM_HERESY_CARD_ASSIMILATION.description": "Whenever this enters your hand, copy a random buff from an enemy.{HasCopy:cond:\n(Copied {CopiedAmount} {CopiedPower})|}",
+  "GUEST_FROM_HERESY_CARD_ASSIMILATION.description": "Whenever this enters your hand, copy the Vector Projection of a random supported buff from an enemy.{HasCopy:cond:\n(Copied {CopiedAmount} {CopiedPower})|}",
   "GUEST_FROM_HERESY_CARD_BIG_CHOMP.selectionScreenPrompt": "Choose a Skill",
   "GUEST_FROM_HERESY_FREE_COST_AFFIX.description": "[gold]Synaesthesia[/gold]: Costs 0.",
   "GUEST_FROM_HERESY_CARD_DIVINE_STROKE.title": "Divine Stroke",
