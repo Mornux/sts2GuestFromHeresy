@@ -1,3 +1,4 @@
 /.godot/
 /tests/**/bin/
 /tests/**/obj/
+/build/

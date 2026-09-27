@@ -65,5 +65,7 @@
   "GUEST_FROM_HERESY_POWER_NIGHT_BLINDNESS_POWER.title": "Night Blindness",
   "GUEST_FROM_HERESY_POWER_NIGHT_BLINDNESS_POWER.description": "The first time you play a Moon Phase card each turn, draw {Amount} card(s).",
   "GUEST_FROM_HERESY_POWER_ECTOPIC_PAIN_POWER.title": "Ectopic Pain",
-  "GUEST_FROM_HERESY_POWER_ECTOPIC_PAIN_POWER.description": "The next {Amount} time(s) you would lose HP, Projection of LOSTAVA loses that much HP instead."
+  "GUEST_FROM_HERESY_POWER_ECTOPIC_PAIN_POWER.description": "The next {Amount} time(s) you would lose HP, Projection of LOSTAVA loses that much HP instead.",
+  "GUEST_FROM_HERESY_POWER_MORAL_DEBT_POWER.title": "Moral Debt",
+  "GUEST_FROM_HERESY_POWER_MORAL_DEBT_POWER.description": "At the end of your turn, if you are not Gazed, gain {Amount} Disintegration."
 }

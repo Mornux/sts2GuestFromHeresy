@@ -202,5 +202,10 @@
   "GUEST_FROM_HERESY_CARD_ECTOPIC_PAIN.title": "Ectopic Pain",
   "GUEST_FROM_HERESY_CARD_ECTOPIC_PAIN.description": "The next time you would lose HP, Projection of LOSTAVA loses that much HP instead.",
   "GUEST_FROM_HERESY_CARD_SELF_ALIENATION.title": "Self Alienation",
-  "GUEST_FROM_HERESY_CARD_SELF_ALIENATION.description": "Deal {Damage:diff()} damage. [gold]Synaesthesia[/gold]: Projection of LOSTAVA loses 3 HP. Double this card’s damage."
+  "GUEST_FROM_HERESY_CARD_SELF_ALIENATION.description": "Deal {Damage:diff()} damage. [gold]Synaesthesia[/gold]: Projection of LOSTAVA loses 3 HP. Double this card’s damage.",
+  "GUEST_FROM_HERESY_CARD_ECHOLALIA.title": "Echolalia",
+  "GUEST_FROM_HERESY_CARD_ECHOLALIA.description": "Transform this card into the last card you played this turn and play it. (Transforms into “{PreviousCard}”.) [gold]Synaesthesia[/gold]: This card costs 0.",
+  "GUEST_FROM_HERESY_CARD_ECHOLALIA.noPrevious": "No card to imitate this turn",
+  "GUEST_FROM_HERESY_CARD_MORAL_DEBT.title": "Moral Debt",
+  "GUEST_FROM_HERESY_CARD_MORAL_DEBT.description": "Gain {Energy:energyIcons()}. Draw {Cards:diff()} cards. At the end of your turn, if you are not [gold]Gazed[/gold], gain 5 [gold]Disintegration[/gold]."
 }

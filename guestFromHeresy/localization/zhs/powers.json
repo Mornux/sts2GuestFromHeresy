@@ -65,5 +65,7 @@
   "GUEST_FROM_HERESY_POWER_NIGHT_BLINDNESS_POWER.title": "夜盲症",
   "GUEST_FROM_HERESY_POWER_NIGHT_BLINDNESS_POWER.description": "每回合第一次打出月相牌时，抽{Amount}张牌。",
   "GUEST_FROM_HERESY_POWER_ECTOPIC_PAIN_POWER.title": "异位痛觉",
-  "GUEST_FROM_HERESY_POWER_ECTOPIC_PAIN_POWER.description": "接下来{Amount}次失去生命值时，改为由洛斯塔法的投影失去等量生命。"
+  "GUEST_FROM_HERESY_POWER_ECTOPIC_PAIN_POWER.description": "接下来{Amount}次失去生命值时，改为由洛斯塔法的投影失去等量生命。",
+  "GUEST_FROM_HERESY_POWER_MORAL_DEBT_POWER.title": "道德债",
+  "GUEST_FROM_HERESY_POWER_MORAL_DEBT_POWER.description": "你的回合结束时，如果未被注视，获得{Amount}层瓦解。"
 }

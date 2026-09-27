@@ -202,5 +202,10 @@
   "GUEST_FROM_HERESY_CARD_ECTOPIC_PAIN.title": "异位痛觉",
   "GUEST_FROM_HERESY_CARD_ECTOPIC_PAIN.description": "你下一次失去生命时，改为由洛斯塔法的投影失去等量生命。",
   "GUEST_FROM_HERESY_CARD_SELF_ALIENATION.title": "自体陌生",
-  "GUEST_FROM_HERESY_CARD_SELF_ALIENATION.description": "造成{Damage:diff()}点伤害。[gold]通感[/gold]：洛斯塔法的投影失去3点生命，这张牌造成的伤害翻倍。"
+  "GUEST_FROM_HERESY_CARD_SELF_ALIENATION.description": "造成{Damage:diff()}点伤害。[gold]通感[/gold]：洛斯塔法的投影失去3点生命，这张牌造成的伤害翻倍。",
+  "GUEST_FROM_HERESY_CARD_ECHOLALIA.title": "仿说",
+  "GUEST_FROM_HERESY_CARD_ECHOLALIA.description": "将这张牌变形为你在本回合打出的上一张牌并打出。（变形为“{PreviousCard}”）[gold]通感[/gold]：这张牌耗能为0。",
+  "GUEST_FROM_HERESY_CARD_ECHOLALIA.noPrevious": "本回合尚无可模仿的牌",
+  "GUEST_FROM_HERESY_CARD_MORAL_DEBT.title": "道德债",
+  "GUEST_FROM_HERESY_CARD_MORAL_DEBT.description": "获得{Energy:energyIcons()}，抽{Cards:diff()}张牌。你的回合结束时，如果未[gold]被注视[/gold]，获得5层[gold]瓦解[/gold]。"
 }

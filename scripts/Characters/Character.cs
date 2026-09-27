@@ -14,7 +14,7 @@ public class Character : ModCharacterTemplate<CardPool, RelicPool, PotionPool>
     public override Color EnergyLabelOutlineColor => NameColor;
     public override Color MapDrawingColor => NameColor;
     public override CharacterGender Gender => CharacterGender.Masculine;
-    public override int StartingHp => 36;
+    public override int StartingHp => 42;
     public override int StartingGold => 99;
     public override bool RequiresEpochAndTimeline => false;
     public override float AttackAnimDelay => 0f;
@@ -30,7 +30,7 @@ public class Character : ModCharacterTemplate<CardPool, RelicPool, PotionPool>
     ];
 
     // Use vanilla assets until the character's custom scenes and textures are ready.
-    public override CharacterAssetProfile AssetProfile => CharacterAssetProfiles.Ironclad();
+    public override CharacterAssetProfile AssetProfile => CharacterAssetProfiles.Necrobinder();
 
     // Add StartingDeckEntries and StartingRelicTypes, or register starters with attributes.
 }
