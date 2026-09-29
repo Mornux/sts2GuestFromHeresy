@@ -9,12 +9,17 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using STS2RitsuLib.Interop.AutoRegistration;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
 public sealed class SealedArtifact() : ArtifactPartCard(2, CardType.Attack, CardRarity.Ancient)
 {
+    public override CardAssetProfile AssetProfile => new(
+        PortraitPath: "res://guestFromHeresy/images/cards/SealedArtifact.png",
+        BetaPortraitPath: "res://guestFromHeresy/images/cards/SealedArtifact.png");
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         InverseLevel.EffectVars.Concat(NegativeEnergyShield.EffectVars).Concat(BloomingCore.EffectVars)
             .Concat(ArtisansHammer.EffectVars).Concat(TidalMarrow.EffectVars).Concat(DisintegrationProbe.EffectVars)

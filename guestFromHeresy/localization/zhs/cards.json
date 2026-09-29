@@ -67,7 +67,7 @@
   "GUEST_FROM_HERESY_CARD_SHADOW_MISSILE.title": "暗影导弹",
   "GUEST_FROM_HERESY_CARD_SHADOW_MISSILE.description": "造成{Damage:diff()}点伤害并给予目标{DisintegrationPower:diff()}层[gold]瓦解[/gold]。[gold]通感[/gold]：改为对所有敌人生效。",
   "GUEST_FROM_HERESY_CARD_BLOOD_MOON.title": "血月",
-  "GUEST_FROM_HERESY_CARD_BLOOD_MOON.description": "造成{Damage:diff()}点伤害{Hits:diff()}次。本场战斗中你每打出过一次[gold]新月[/gold]或[gold]满月[/gold]，增加1次伤害（基础{CalculationBase:diff()}次）。",
+  "GUEST_FROM_HERESY_CARD_BLOOD_MOON.description": "造成{Damage:diff()}点伤害{Hits:diff()}次。本场战斗中你每打出过一次[gold]新月[/gold]或[gold]满月[/gold]，增加1次伤害。",
   "GUEST_FROM_HERESY_CARD_LUNAR_ECLIPSE.title": "月食",
   "GUEST_FROM_HERESY_CARD_LUNAR_ECLIPSE.description": "造成{Damage:diff()}点伤害，打出并[gold]消耗[/gold]你抽牌堆中的一张[gold]新月[/gold]或[gold]满月[/gold]。",
   "GUEST_FROM_HERESY_CARD_DIM_BARRAGE.title": "黯淡集束",

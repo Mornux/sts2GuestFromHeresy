@@ -16,5 +16,9 @@ public sealed class BombRune() : TemporaryArtSkill(1, CardRarity.Common)
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) => PowerCmd.Apply<BombRunePower>(context, Owner.Creature, 1m, Owner.Creature, this);
-    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
+        AddKeyword(CardKeyword.Retain);
+    }
 }

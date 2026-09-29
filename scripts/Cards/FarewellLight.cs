@@ -10,6 +10,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class FarewellLight() : TemporaryArtSkill(1, CardRarity.Uncommon)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.FromCard<ShadowShield>(IsUpgraded)];
 

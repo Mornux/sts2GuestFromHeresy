@@ -67,7 +67,7 @@
   "GUEST_FROM_HERESY_CARD_SHADOW_MISSILE.title": "Shadow Missile",
   "GUEST_FROM_HERESY_CARD_SHADOW_MISSILE.description": "Deal {Damage:diff()} damage and apply {DisintegrationPower:diff()} [gold]Disintegration[/gold]. [gold]Synaesthesia[/gold]: Affect all enemies instead.",
   "GUEST_FROM_HERESY_CARD_BLOOD_MOON.title": "Blood Moon",
-  "GUEST_FROM_HERESY_CARD_BLOOD_MOON.description": "Deal {Damage:diff()} damage {Hits:diff()} times. Starts at {CalculationBase:diff()} hits, plus 1 for each [gold]Crescent[/gold] or [gold]Full Moon[/gold] you have played this combat.",
+  "GUEST_FROM_HERESY_CARD_BLOOD_MOON.description": "Deal {Damage:diff()} damage {Hits:diff()} times. Hits 1 additional time for each [gold]Crescent[/gold] or [gold]Full Moon[/gold] you have played this combat.",
   "GUEST_FROM_HERESY_CARD_LUNAR_ECLIPSE.title": "Lunar Eclipse",
   "GUEST_FROM_HERESY_CARD_LUNAR_ECLIPSE.description": "Deal {Damage:diff()} damage. Play and [gold]Exhaust[/gold] a [gold]Crescent[/gold] or [gold]Full Moon[/gold] from your draw pile.",
   "GUEST_FROM_HERESY_CARD_DIM_BARRAGE.title": "Dim Barrage",

@@ -1,4 +1,5 @@
 using guestFromHeresy.Cards;
+using MegaCrit.Sts2.Core.Localization;
 using guestFromHeresy.Capabilities;
 using guestFromHeresy.Projection;
 using MegaCrit.Sts2.Core.Combat;
@@ -27,6 +28,16 @@ public sealed class BigChompPower : TurnStartPower
     private CardModel? _meal;
     private CardModel? _mealTemplate;
     public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+    public override LocString Description
+    {
+        get
+        {
+            var description = base.Description;
+            description.Add("Meal", _mealTemplate?.Title ?? _meal?.Title ?? "");
+            description.Add("HasMeal", _mealTemplate != null || _meal != null);
+            return description;
+        }
+    }
     public void SetMeal(CardModel card)
     {
         _meal = card;

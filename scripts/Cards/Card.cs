@@ -84,6 +84,13 @@ public abstract class MoonPhaseCard(int cost, CardType type, CardRarity rarity, 
         if (!IsTransformable || MegaCrit.Sts2.Core.Combat.CombatManager.Instance.IsEnding) return;
         CardModel replacement = CreateOtherPhase();
         if (IsUpgraded) CardCmd.Upgrade(replacement, CardPreviewStyle.None);
+        if (this.Enchantment is { } enchantment)
+        {
+            var copy = (EnchantmentModel)enchantment.MutableClone();
+            replacement.EnchantInternal(copy, enchantment.Amount);
+            copy.ModifyCard();
+            replacement.FinalizeUpgradeInternal();
+        }
         await CardCmd.Transform(this, replacement, CardPreviewStyle.None);
     }
 }

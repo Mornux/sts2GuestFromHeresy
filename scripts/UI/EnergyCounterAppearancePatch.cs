@@ -12,12 +12,15 @@ public static class EnergyCounterAppearancePatch
     {
         if (__result == null || player.Character is not Characters.Character) return;
 
-        // The character uses the Ironclad counter scene. Replace its artwork before
-        // _Ready runs, retaining the native label, darkening, and energy-gain effects.
-        __result.GetNode<TextureRect>("Layers/Layer1").Texture =
-            ResourceLoader.Load<Texture2D>("res://guestFromHeresy/images/signals/energy.png");
-        __result.GetNode<Control>("Layers/RotationLayers").Hide();
-        __result.GetNode<Control>("Layers/Layer4").Hide();
-        __result.GetNode<Control>("Layers/Layer5").Hide();
+        // Counter scenes have different optional artwork layers. Missing artwork must
+        // not interrupt combat setup; keep the native counter if its base layer differs.
+        if (__result.GetNodeOrNull<TextureRect>("Layers/Layer1") is { } baseLayer)
+        {
+            var texture = ResourceLoader.Load<Texture2D>("res://guestFromHeresy/images/signals/energy.png");
+            if (texture != null) baseLayer.Texture = texture;
+        }
+        __result.GetNodeOrNull<Control>("Layers/RotationLayers")?.Hide();
+        __result.GetNodeOrNull<Control>("Layers/Layer4")?.Hide();
+        __result.GetNodeOrNull<Control>("Layers/Layer5")?.Hide();
     }
 }

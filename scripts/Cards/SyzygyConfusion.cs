@@ -32,6 +32,13 @@ public sealed class SyzygyConfusion() : TemporaryArtSkill(0, CardRarity.Common)
             if (original.Pile?.Type != PileType.Hand || !original.IsTransformable || CombatManager.Instance.IsOverOrEnding) continue;
             CardModel replacement = original is Crescent ? CardScope!.CreateCard<FullMoon>(Owner) : CardScope!.CreateCard<Crescent>(Owner);
             if (original.IsUpgraded) CardCmd.Upgrade(replacement, CardPreviewStyle.None);
+            if (original.Enchantment is { } enchantment)
+            {
+                var copy = (EnchantmentModel)enchantment.MutableClone();
+                replacement.EnchantInternal(copy, enchantment.Amount);
+                copy.ModifyCard();
+                replacement.FinalizeUpgradeInternal();
+            }
             replacement.GiveSingleTurnRetain();
             await CardCmd.Transform(original, replacement, CardPreviewStyle.None);
         }

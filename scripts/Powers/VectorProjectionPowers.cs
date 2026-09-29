@@ -266,7 +266,7 @@ public abstract class VectorProjectionPower : ModPowerTemplate
         {
             case "PainfulStabsPower": await PowerCmd.Apply<DisintegrationPower>(context, target, Amount, Owner, cardSource); break;
             case "PaperCutsPower": await CreatureCmd.LoseMaxHp(context, target, Amount, isFromCard: false); break;
-            case "VitalSparkPower": await PowerCmd.Apply<PoisonPower>(context, target, Amount, Owner, cardSource); break;
+            case "VitalSparkPower": await PowerCmd.Apply<DisintegrationPower>(context, target, Amount, Owner, cardSource); break;
             case "PossessStrengthPower":
                 if (_triggered) break; _triggered = true;
                 await PowerCmd.Apply<StrengthPower>(context, target, -Amount, Owner, null); await Strength(context, Amount); break;
