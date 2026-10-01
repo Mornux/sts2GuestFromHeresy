@@ -13,7 +13,7 @@ public sealed class TimeHasCome() : TemporaryArtSkill(0, CardRarity.Common)
 {
     protected override string PortraitName => nameof(TimeHasCome);
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal, CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1), new EnergyVar("EmptyEnergy", 2)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [EnergyHoverTip];
 
@@ -24,5 +24,5 @@ public sealed class TimeHasCome() : TemporaryArtSkill(0, CardRarity.Common)
         await PlayerCmd.GainEnergy(energy, Owner);
     }
 
-    protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);
+    protected override void OnUpgrade() => RemoveKeyword(CardKeyword.Exhaust);
 }

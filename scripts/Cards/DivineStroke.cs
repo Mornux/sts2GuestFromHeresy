@@ -14,7 +14,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class DivineStroke() : TemporaryArtSkill(0, CardRarity.Rare)
+public sealed class DivineStroke() : TemporaryArtSkill(0, CardRarity.Common)
 {
     protected override string PortraitName => nameof(DivineStroke);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, CardKeyword.Exhaust];
@@ -44,14 +44,14 @@ public sealed class DivineStroke() : TemporaryArtSkill(0, CardRarity.Rare)
                 if (option == 0)
                 {
                     decimal loss = Hook.ModifyDamage(Owner.RunState, CombatState, enemy, Owner.Creature, DynamicVars.HpLoss.BaseValue,
-                        ValueProp.Unpowered | ValueProp.Unblockable, this, ModifyDamageHookType.All, CardPreviewMode.None, out _);
+                        ValueProp.Unpowered | ValueProp.Unblockable, this, play, ModifyDamageHookType.All, CardPreviewMode.None, out _);
                     if (enemy.CurrentHp <= loss && Hook.ShouldDie(Owner.RunState, CombatState, enemy, out _)) continue;
                 }
                 foreach (var intent in enemy.Monster.NextMove.Intents.OfType<AttackIntent>())
                 {
                     if (intent.DamageCalc == null) continue;
                     decimal damage = Math.Max(0m, decimal.Floor(Hook.ModifyDamage(Owner.RunState, CombatState,
-                        Owner.Creature, enemy, intent.DamageCalc(), ValueProp.Move, null,
+                        Owner.Creature, enemy, intent.DamageCalc(), ValueProp.Move, null, null,
                         ModifyDamageHookType.All, CardPreviewMode.None, out _)));
                     for (int hit = 0; hit < Math.Max(1, intent.Repeats); hit++)
                     {
@@ -71,7 +71,7 @@ public sealed class DivineStroke() : TemporaryArtSkill(0, CardRarity.Rare)
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
         else
             await CreatureCmd.Damage(context, CombatState!.HittableEnemies.ToArray(), DynamicVars.HpLoss.BaseValue,
-                ValueProp.Unpowered | ValueProp.Unblockable, Owner.Creature, this);
+                ValueProp.Unpowered | ValueProp.Unblockable, Owner.Creature, this, play);
     }
 
     protected override void OnUpgrade()

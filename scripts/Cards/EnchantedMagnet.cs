@@ -28,7 +28,7 @@ public sealed class EnchantedMagnet() : ArtifactPartCard(1, CardType.Attack, Car
         if (target?.IsAlive != true)
             target = source.Owner.RunState.Rng.CombatTargets.NextItem(source.CombatState!.HittableEnemies.ToArray());
         if (target == null) return;
-        await DamageCmd.Attack(source.DynamicVars["MagnetDamage"].BaseValue).FromCard(source).Targeting(target)
+        await DamageCmd.Attack(source.DynamicVars["MagnetDamage"].BaseValue).FromCard(source, play).Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash").Execute(context);
         if (!CombatManager.Instance.IsOverOrEnding && source.Owner.Creature.IsAlive)
             await PowerCmd.Apply<VigorPower>(context, source.Owner.Creature, source.DynamicVars["VigorPower"].BaseValue, source.Owner.Creature, source);

@@ -31,5 +31,5 @@ public sealed class Illusion : ModCardTemplate
         }
     }
 
-    protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(1m);
+    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
 }

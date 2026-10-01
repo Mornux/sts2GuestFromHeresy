@@ -93,7 +93,6 @@ public abstract class VectorProjectionPower : ModPowerTemplate
     private decimal _hpLost;
     private int _vigorAtStart;
     private CardModel? _storedCard;
-    private Creature? _markedTarget;
     public override PowerInstanceType InstanceType => Kind is "SwipePower" or "SandpitPower" ? PowerInstanceType.Instanced : PowerInstanceType.None;
     private bool IsRevival => Kind is "AdaptablePower" or "IllusionPower" or "ReattachPower" or "StockPower";
     public override bool ShouldDieLate(Creature creature) => creature != Owner || !IsRevival || Amount <= 0;
@@ -117,7 +116,7 @@ public abstract class VectorProjectionPower : ModPowerTemplate
     protected Task Strength(PlayerChoiceContext context, decimal amount) => PowerCmd.Apply<StrengthVectorProjectionPower>(context, Owner, amount, Owner, null);
     protected Task Dexterity(PlayerChoiceContext context, decimal amount) => PowerCmd.Apply<DexterityVectorProjectionPower>(context, Owner, amount, Owner, null);
     protected Task Hit(PlayerChoiceContext context, Creature target, decimal amount) => target.IsAlive
-        ? CreatureCmd.Damage(context, target, amount, ValueProp.Unpowered, Owner, null) : Task.CompletedTask;
+        ? CreatureCmd.Damage(context, target, amount, ValueProp.Unpowered, Owner, null, null) : Task.CompletedTask;
     protected async Task HitAll(PlayerChoiceContext context, decimal amount)
     {
         foreach (var enemy in Owner.CombatState!.GetOpponentsOf(Owner).Where(c => c.IsAlive).ToArray()) await Hit(context, enemy, amount);
@@ -145,31 +144,26 @@ public abstract class VectorProjectionPower : ModPowerTemplate
                 room.AddExtraReward(player, reward);
             }
         }
-        if (Kind == "SandpitPower")
-        {
-            var enemies = Owner.CombatState!.GetOpponentsOf(Owner).Where(c => c.IsAlive).ToArray();
-            if (enemies.Length > 0) _markedTarget = Owner.Player!.RunState.Rng.CombatTargets.NextItem(enemies);
-        }
     }
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource) =>
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay) =>
         dealer == Owner && props.IsPoweredAttack() && Kind is "StrengthPower" or "VigorPower" ? Amount : 0m;
     public override decimal ModifyBlockAdditive(Creature target, decimal amount, ValueProp props, CardModel? cardSource, CardPlay? cardPlay) =>
         target == Owner && props.HasFlag(ValueProp.Move) && Kind == "DexterityPower" ? Amount : 0m;
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
         if (!props.IsPoweredAttack()) return 1m;
         if (target == Owner && Kind is "FlutterPower" or "SoarPower") return 0.5m;
         if (dealer == Owner && target != null && target.Side != Owner.Side && target.Block == 0 && Kind is "BackAttackLeftPower" or "BackAttackRightPower") return 1.5m;
         return 1m;
     }
-    public override decimal ModifyDamageCap(Creature? target, ValueProp props, Creature? dealer, CardModel? cardSource) =>
+    public override decimal ModifyDamageCap(Creature? target, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay) =>
         target != Owner ? decimal.MaxValue : Kind == "IntangiblePower" ? 1m : Kind == "HardToKillPower" ? Amount : decimal.MaxValue;
     public override decimal ModifyHpLostBeforeOstyLate(Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource) =>
         target == Owner && Kind == "HardenedShellPower" ? Math.Min(amount, Math.Max(0m, Amount - _hpLost)) : amount;
     public override decimal ModifyHpLostAfterOsty(Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource) =>
         target == Owner && (Kind == "IntangiblePower" || Kind == "SlipperyPower" && props.IsPoweredAttack()) ? Math.Min(amount, 1m) : amount;
     public override bool ShouldClearBlock(Creature creature) => creature != Owner || Kind != "BurrowedPower";
-    public override async Task AfterBlockBroken(Creature creature)
+    public override async Task AfterBlockBroken(PlayerChoiceContext context, Creature creature, Creature? dealer)
     {
         if (creature == Owner && Kind == "BurrowedPower") await PowerCmd.Remove(this);
     }
@@ -195,6 +189,12 @@ public abstract class VectorProjectionPower : ModPowerTemplate
         if (Kind == "RampartPower") await Block(Amount);
         if (Kind == "PlatingPower") await PowerCmd.Decrement(this);
     }
+    public override Task AfterPlayerTurnStart(PlayerChoiceContext context, MegaCrit.Sts2.Core.Entities.Players.Player player)
+    {
+        if (Kind == "SlumberPower" && player == Owner.Player && Owner.IsAlive && Amount > 0)
+            CombatManager.Instance.SetReadyToEndTurn(player, canBackOut: false);
+        return Task.CompletedTask;
+    }
     public override async Task BeforeSideTurnEndEarly(PlayerChoiceContext context, CombatSide side, IEnumerable<Creature> participants)
     {
         if (participants.Contains(Owner) && Owner.IsAlive && Kind is "PlatingPower" or "AsleepPower" or "SlumberPower") await Block(Amount);
@@ -208,8 +208,9 @@ public abstract class VectorProjectionPower : ModPowerTemplate
         switch (Kind)
         {
             case "SandpitPower":
-                if (Amount > 1) await PowerCmd.Decrement(this);
-                else { await PowerCmd.Remove(this); if (_markedTarget?.IsAlive == true) await CreatureCmd.Kill(_markedTarget); }
+                var escape = PileType.Draw.GetPile(Owner.Player!).Cards.OfType<MegaCrit.Sts2.Core.Models.Cards.FranticEscape>().FirstOrDefault();
+                if (escape != null) await CardCmd.AutoPlay(context, escape, null);
+                await PowerCmd.Decrement(this);
                 break;
             case "RitualPower": case "HighVoltagePower": case "TerritorialPower": await Strength(context, Amount); break;
             case "AsleepPower": case "SlumberPower": await PowerCmd.Decrement(this); break;
@@ -230,6 +231,12 @@ public abstract class VectorProjectionPower : ModPowerTemplate
         var received = command.Results.SelectMany(r => r).Where(r => r.Receiver == Owner).ToArray();
         if (Kind == "SkittishPower" && !_triggered && received.Any(r => r.UnblockedDamage > 0)) { _triggered = true; await Block(Amount); }
         if (Kind == "CurlUpPower" && received.Length > 0) { await Block(Amount); await PowerCmd.Remove(this); }
+        if (Kind == "PersonalHivePower" && command.Attacker != null && command.Attacker.Side != Owner.Side && received.Length > 0)
+        {
+            var statuses = PileType.Draw.GetPile(Owner.Player!).Cards.Where(c => c.Type == CardType.Status).ToArray();
+            if (statuses.Length > 0)
+                await CardCmd.Exhaust(context, Owner.Player!.RunState.Rng.CombatCardSelection.NextItem(statuses)!);
+        }
         if (command.Attacker != Owner) return;
         if (Kind == "VigorPower" && _vigorAtStart > 0)
         {
@@ -246,16 +253,17 @@ public abstract class VectorProjectionPower : ModPowerTemplate
     {
         if (Kind == "ThornsPower" && target == Owner && dealer != null && dealer.Side != Owner.Side && props.IsPoweredAttack()) await Hit(context, dealer, Amount);
     }
+    public override Task AfterCurrentHpChanged(Creature creature, decimal delta) =>
+        Kind == "SlumberPower" && creature == Owner && delta < 0 ? PowerCmd.Remove(this) : Task.CompletedTask;
+
     public override async Task AfterDamageReceived(PlayerChoiceContext context, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target != Owner || !Owner.IsAlive) return;
         if (Kind == "HardenedShellPower") _hpLost += Math.Max(0, result.UnblockedDamage);
-        if (Kind == "PersonalHivePower" && dealer != null && dealer.Side != Owner.Side && props.IsPoweredAttack())
-            await PowerCmd.Apply<WeakPower>(context, dealer, Amount, Owner, null);
         if (result.UnblockedDamage <= 0) return;
         if (Kind == "SteamEruptionPower") { int damage = Amount; await PowerCmd.Remove(this); await HitAll(context, damage); }
         if (Kind == "AsleepPower") await PowerCmd.Remove(this);
-        if (Kind == "SlumberPower" || (props.IsPoweredAttack() && Kind is "FlutterPower" or "SlipperyPower")) await PowerCmd.Decrement(this);
+        if (props.IsPoweredAttack() && Kind is "FlutterPower" or "SlipperyPower") await PowerCmd.Decrement(this);
     }
     public override async Task AfterDamageGiven(PlayerChoiceContext context, Creature? dealer, DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
     {
@@ -266,19 +274,31 @@ public abstract class VectorProjectionPower : ModPowerTemplate
         {
             case "PainfulStabsPower": await PowerCmd.Apply<DisintegrationPower>(context, target, Amount, Owner, cardSource); break;
             case "PaperCutsPower": await CreatureCmd.LoseMaxHp(context, target, Amount, isFromCard: false); break;
-            case "VitalSparkPower": await PowerCmd.Apply<DisintegrationPower>(context, target, Amount, Owner, cardSource); break;
             case "PossessStrengthPower":
                 if (_triggered) break; _triggered = true;
-                await PowerCmd.Apply<StrengthPower>(context, target, -Amount, Owner, null); await Strength(context, Amount); break;
+                await PowerCmd.Apply<StrengthPower>(context, target, -Amount, Owner, null);
+                await Strength(context, Amount);
+                await PowerCmd.Remove(this);
+                break;
             case "PossessSpeedPower":
                 if (_triggered) break; _triggered = true;
-                await PowerCmd.Apply<DexterityPower>(context, target, -Amount, Owner, null); await Dexterity(context, Amount); break;
+                await PowerCmd.Apply<DexterityPower>(context, target, -Amount, Owner, null);
+                await Dexterity(context, Amount);
+                await PowerCmd.Remove(this);
+                break;
         }
     }
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay play)
     {
         if (play.Card.Owner.Creature != Owner || !Owner.IsAlive) return;
         if (Kind == "EnragePower" && play.Card.Type == CardType.Skill) await Strength(context, Amount);
+        if (Kind == "VitalSparkPower" && play.Card.Type == CardType.Skill)
+        {
+            decimal layers = Owner.GetPowerAmount<TaintedPower>() * (decimal)Amount;
+            if (layers > 0)
+                await PowerCmd.Apply<DisintegrationPower>(context,
+                    Owner.CombatState!.GetOpponentsOf(Owner).Where(c => c.IsAlive).ToArray(), layers, Owner, play.Card);
+        }
         if (Kind == "GalvanicPower" && play.Card.Type == CardType.Skill)
         {
             var enemies = Owner.CombatState!.GetOpponentsOf(Owner).Where(c => c.IsAlive).ToArray();

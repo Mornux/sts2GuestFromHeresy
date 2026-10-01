@@ -13,7 +13,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class UnderstandingVoid() : TemporaryArtPower(1, CardRarity.Common)
 {
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<ShadowMissile>()];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<ShadowMissile>(IsUpgraded)];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) =>
         PowerCmd.Apply<UnderstandingVoidPower>(context, Owner.Creature, 1m, Owner.Creature, this);
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);

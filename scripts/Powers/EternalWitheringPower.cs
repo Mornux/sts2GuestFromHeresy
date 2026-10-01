@@ -24,6 +24,10 @@ namespace guestFromHeresy.Powers;
 [RegisterPower]
 public sealed class EternalWitheringPower : TemporaryIconPower
 {
-    public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay play) => play.Card.Owner.Creature == Owner && Owner.IsAlive
-        ? PowerCmd.Apply<DisintegrationPower>(context, Owner.CombatState!.HittableEnemies, Amount, Owner, play.Card) : Task.CompletedTask;
+    public override async Task AfterEnergySpent(CardModel card, int amount)
+    {
+        if (card.Owner.Creature != Owner || !Owner.IsAlive) return;
+        for (int i = 0; i < amount && Owner.IsAlive; i++)
+            await PowerCmd.Apply<DisintegrationPower>(new ThrowingPlayerChoiceContext(), Owner.CombatState!.HittableEnemies.ToArray(), Amount, Owner, card);
+    }
 }

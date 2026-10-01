@@ -25,5 +25,5 @@ public sealed class EntropicMetamorphosis : ModCardTemplate
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(2m);
+    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
 }

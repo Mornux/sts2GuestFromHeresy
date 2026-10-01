@@ -22,13 +22,19 @@ namespace guestFromHeresy.Cards;
 public sealed class AtrocityOptimization() : SynaestheticAttack(1, CardRarity.Common)
 {
     protected override string PortraitName => nameof(AtrocityOptimization);
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move), new DynamicVar("Boost", 10m), new DynamicVar("SynaestheticBoost", 30m)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         bool active = Synaesthesia.IsActive(this);
         await Attack(DynamicVars.Damage.BaseValue, play).Execute(context);
-        await PowerCmd.Apply<AtrocityOptimizationPower>(context, Owner.Creature, active ? 50m : 10m, Owner.Creature, this);
+        await PowerCmd.Apply<AtrocityOptimizationPower>(context, Owner.Creature,
+            DynamicVars[active ? "SynaestheticBoost" : "Boost"].BaseValue, Owner.Creature, this);
     }
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars["Boost"].UpgradeValueBy(10m);
+        DynamicVars["SynaestheticBoost"].UpgradeValueBy(20m);
+    }
 }

@@ -29,6 +29,10 @@ public sealed class ImaginaryTouch() : SynaestheticAttack(2, CardRarity.Common)
         modifiedCost = active ? 0m : originalCost;
         return active;
     }
-    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play) => await Attack(DynamicVars.Damage.BaseValue, play).Execute(context);
+    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
+    {
+        await Attack(DynamicVars.Damage.BaseValue, play).Execute(context);
+        await CardPileCmd.Draw(context, 1m, Owner);
+    }
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(4m);
 }

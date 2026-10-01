@@ -21,12 +21,12 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class GravityMoment() : TemporaryArtAttack(0, CardRarity.Common)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         var attack = await Attack(DynamicVars.Damage.BaseValue, play).Execute(context);
         if (attack.Results.SelectMany(r => r).Any(r => r.WasBlockBroken))
             await PowerCmd.Apply<GravityMomentPower>(context, Owner.Creature, 1m, Owner.Creature, this);
     }
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(3m);
 }

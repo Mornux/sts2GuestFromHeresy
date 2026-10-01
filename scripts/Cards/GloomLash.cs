@@ -30,7 +30,7 @@ public sealed class GloomLash() : TemporaryArtSkill(1, CardRarity.Uncommon)
             if (Owner.Creature.IsDead) break;
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             var leftmost = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault();
-            if (leftmost != null) await CardCmd.AutoPlay(choiceContext, leftmost, null);
+            if (leftmost != null && !leftmost.EnergyCost.CostsX) leftmost.EnergyCost.AddThisCombat(-1);
         }
     }
 

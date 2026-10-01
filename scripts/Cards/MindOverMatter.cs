@@ -11,7 +11,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class MindOverMatter() : TemporaryArtPower(2, CardRarity.Uncommon)
+public sealed class MindOverMatter() : TemporaryArtPower(2, CardRarity.Rare)
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [EnergyHoverTip, HoverTipFactory.FromPower<GazedPower>()];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1), new EnergyVar("GazedEnergy", 2)];

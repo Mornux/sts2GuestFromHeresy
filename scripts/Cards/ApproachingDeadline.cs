@@ -14,7 +14,7 @@ public sealed class ApproachingDeadline() : TemporaryArtSkill(1, CardRarity.Rare
 {
     protected override string PortraitName => nameof(ApproachingDeadline);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(4)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [EnergyHoverTip];
 

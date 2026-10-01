@@ -15,11 +15,12 @@ using STS2RitsuLib.Models.Capabilities;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class Glimpse() : TemporaryArtSkill(1, CardRarity.Common)
+public sealed class Glimpse() : TemporaryArtSkill(0, CardRarity.Common)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override string PortraitName => nameof(Glimpse);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GazedPower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GazedPower>(1m), new DynamicVar("AffixGazed", 1m)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.FromPower<GazedPower>(), ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
 
@@ -30,8 +31,8 @@ public sealed class Glimpse() : TemporaryArtSkill(1, CardRarity.Common)
         var selected = await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(SelectionScreenPrompt, 1), null, this);
         foreach (var card in selected)
-            card.GetOrCreateCapability<SynaestheticGaze>().AddStack();
+            card.GetOrCreateCapability<SynaestheticGaze>().AddStack(DynamicVars["AffixGazed"].BaseValue);
     }
 
-    protected override void OnUpgrade() => DynamicVars["GazedPower"].UpgradeValueBy(1m);
+    protected override void OnUpgrade() => DynamicVars["AffixGazed"].UpgradeValueBy(1m);
 }

@@ -34,7 +34,7 @@ public sealed class SensoryExplosion() : SynaestheticAttack(2, CardRarity.Uncomm
         if (Synaesthesia.IsActive(this) && CombatState != null)
             damage = string.Join(" / ", CombatState.HittableEnemies.Select(target => decimal.Truncate(
                 Hook.ModifyDamage(Owner.RunState, CombatState, target, Owner.Creature, DynamicVars.CalculatedDamage.Calculate(target),
-                    ValueProp.Move, this, ModifyDamageHookType.All, CardPreviewMode.Normal, out _)).ToString(CultureInfo.InvariantCulture)));
+                    ValueProp.Move, this, null, ModifyDamageHookType.All, CardPreviewMode.Normal, out _)).ToString(CultureInfo.InvariantCulture)));
         description.Add("AllDamage", string.IsNullOrEmpty(damage) ? "0" : damage);
     }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
@@ -43,9 +43,9 @@ public sealed class SensoryExplosion() : SynaestheticAttack(2, CardRarity.Uncomm
         foreach (var target in targets.Where(t => t.IsAlive))
         {
             if (Owner.Creature.IsDead) break;
-            await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(target)
+            await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this, play).Targeting(target)
                 .WithHitFx("vfx/vfx_attack_slash").Execute(context);
         }
     }
-    protected override void OnUpgrade() => DynamicVars.ExtraDamage.UpgradeValueBy(0.5m);
+    protected override void OnUpgrade() => DynamicVars.ExtraDamage.UpgradeValueBy(1m);
 }

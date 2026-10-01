@@ -74,7 +74,7 @@ public sealed class SecretFeastChalice : TemporaryIconRelic
         _spent = true;
         InvokeDisplayAmountChanged();
         Flash();
-        var dupe = _firstCard.CreateDupe();
+        var dupe = _firstCard.CreateDupe(Owner);
         var target = _target is { IsAlive: true } ? _target : dupe.TargetType == TargetType.AnyPlayer ? Owner.Creature : null;
         await CardCmd.AutoPlay(context, dupe, target, skipXCapture: true);
     }

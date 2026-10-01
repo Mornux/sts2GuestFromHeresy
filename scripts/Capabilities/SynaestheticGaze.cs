@@ -19,7 +19,7 @@ public sealed class SynaestheticGaze : ModelCapability<CardModel>, IModelCapabil
 {
     private HashSet<CardPlay> _activePlays = [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("GlimpseGazed", 0m)];
-    public void AddStack() => Modify(_ => DynamicVars["GlimpseGazed"].BaseValue++);
+    public void AddStack(decimal amount = 1m) => Modify(_ => DynamicVars["GlimpseGazed"].BaseValue += amount);
 
     public IEnumerable<CardDescriptionFragment> GetDescriptionFragments(CardDescriptionContext context) =>
         [new(new LocString("cards", "GUEST_FROM_HERESY_GLIMPSE_AFFIX.description"), CardDescriptionFragmentPlacement.AfterBase)];

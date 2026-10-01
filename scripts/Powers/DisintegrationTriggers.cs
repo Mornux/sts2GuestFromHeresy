@@ -9,6 +9,19 @@ using System.Runtime.CompilerServices;
 
 namespace guestFromHeresy.Powers;
 
+[HarmonyPatch(typeof(MegaCrit.Sts2.Core.Models.PowerModel), nameof(MegaCrit.Sts2.Core.Models.PowerModel.Description), MethodType.Getter)]
+internal static class DisintegrationDescriptionPatch
+{
+    private static void Postfix(MegaCrit.Sts2.Core.Models.PowerModel __instance,
+        ref MegaCrit.Sts2.Core.Localization.LocString __result)
+    {
+        // Canonical keyword tips have no owning creature/stack count. Live powers keep
+        // the vanilla smartDescription, which already formats their current Amount.
+        if (__instance is DisintegrationPower)
+            __result = new("powers", "GUEST_FROM_HERESY_DISINTEGRATION.description");
+    }
+}
+
 public static class DisintegrationTriggers
 {
     private static readonly ConditionalWeakTable<ICombatState, Dictionary<Creature, int>> TriggerCounts = new();
@@ -28,7 +41,7 @@ public static class DisintegrationTriggers
             var counts = TriggerCounts.GetOrCreateValue(combat);
             counts[owner] = counts.GetValueOrDefault(owner) + 1;
             var counters = combat.Creatures.Where(c => c.IsAlive).SelectMany(c => c.Powers.OfType<PerpetualDecayPower>()).ToArray();
-            var results = await CreatureCmd.Damage(context, owner, layers, ValueProp.Unpowered, owner, null);
+            var results = await CreatureCmd.Damage(context, owner, layers, ValueProp.Unpowered, owner, null, null);
             hpLost += results.Where(result => result.Receiver == owner).Sum(result => result.UnblockedDamage);
             foreach (var counter in counters) await counter.CountTrigger(context, layers);
         }

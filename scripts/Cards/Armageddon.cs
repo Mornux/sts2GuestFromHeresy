@@ -13,20 +13,19 @@ public sealed class Armageddon() : TemporaryArtSkill(0, CardRarity.Rare)
     protected override string PortraitName => nameof(Armageddon);
 
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var drawPile = PileType.Draw.GetPile(Owner);
-        var cards = drawPile.Cards.ToArray();
+        var cards = drawPile.Cards.Take(IsUpgraded ? int.MaxValue : 6).ToArray();
         foreach (var card in cards)
         {
             if (Owner.Creature.IsDead) break;
             if (card.Pile == drawPile) await CardCmd.AutoPlay(choiceContext, card, null);
         }
         if (!Owner.Creature.IsDead)
-            await CreatureCmd.Damage(choiceContext, Owner.Creature, 666m, ValueProp.Unpowered, Owner.Creature, this);
+            await PowerCmd.Apply<MegaCrit.Sts2.Core.Models.Powers.DisintegrationPower>(choiceContext, Owner.Creature, 666m, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => RemoveKeyword(CardKeyword.Retain);
+    protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);
 }

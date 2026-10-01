@@ -9,7 +9,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class PoisonChainRune() : TemporaryArtSkill(1, CardRarity.Rare)
+public sealed class PoisonChainRune() : TemporaryArtSkill(1, CardRarity.Uncommon)
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.Static(StaticHoverTip.Stun)];

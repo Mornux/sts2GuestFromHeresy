@@ -24,10 +24,21 @@ namespace guestFromHeresy.Powers;
 [RegisterPower]
 public sealed class UnderstandingVoidPower : TemporaryIconPower
 {
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("UpgradedMissile", 0m)];
+    public override Task AfterApplied(Creature? applier, CardModel? source)
+    {
+        DynamicVars["UpgradedMissile"].BaseValue = source?.IsUpgraded == true ? 1m : 0m;
+        return Task.CompletedTask;
+    }
     public override async Task BeforeHandDraw(Player player, PlayerChoiceContext context, ICombatState combat)
     {
         if (player != Owner.Player) return;
         for (int i = 0; i < Amount; i++)
-            await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<ShadowMissile>(player), PileType.Hand, player);
+        {
+            var missile = combat.CreateCard<ShadowMissile>(player);
+            if (DynamicVars["UpgradedMissile"].BaseValue > 0) CardCmd.Upgrade(missile);
+            await CardPileCmd.AddGeneratedCardToCombat(missile, PileType.Hand, player);
+        }
     }
 }

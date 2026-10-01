@@ -59,7 +59,7 @@ public sealed class GravityMomentPower : ModPowerTemplate
         try
         {
             foreach (var enemy in enemies.Where(e => e.IsAlive))
-                await CreatureCmd.Damage(context, enemy, damage, ValueProp.Unpowered, Owner, null);
+                await CreatureCmd.Damage(context, enemy, damage, ValueProp.Unpowered, Owner, null, null);
         }
         finally { _redirecting = false; }
     }

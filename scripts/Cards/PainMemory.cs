@@ -29,7 +29,7 @@ public sealed class PainMemory() : TemporaryArtSkill(0, CardRarity.Uncommon, Tar
         int lost = 0;
         for (int i = 0; i < DynamicVars["Triggers"].IntValue && target.IsAlive; i++)
             if (target.GetPower<DisintegrationPower>() is { } power) lost += await DisintegrationTriggers.Trigger(context, power);
-        if (lost > 0) await CardPileCmd.Draw(context, 1m, Owner);
+        if (lost > 0) await CardPileCmd.Draw(context, DynamicVars.Cards.BaseValue, Owner);
     }
-    protected override void OnUpgrade() => DynamicVars["Triggers"].UpgradeValueBy(1m);
+    protected override void OnUpgrade() { DynamicVars["Triggers"].UpgradeValueBy(1m); DynamicVars.Cards.UpgradeValueBy(1m); }
 }

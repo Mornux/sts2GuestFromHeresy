@@ -19,16 +19,15 @@ using STS2RitsuLib.Keywords;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class FirstImpression() : SynaestheticAttack(0, CardRarity.Common, TargetType.AllEnemies)
+public sealed class FirstImpression() : TemporaryArtAttack(0, CardRarity.Common, TargetType.AllEnemies)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate, CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
-    protected override PileType GetResultPileTypeForCardPlay()
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<GazedPower>()];
+    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        if (Synaesthesia.IsActive(this)) RemoveKeyword(CardKeyword.Exhaust);
-        return base.GetResultPileTypeForCardPlay();
+        await PowerCmd.Apply<GazedPower>(context, Owner.Creature, 1m, Owner.Creature, this);
+        await Attack(DynamicVars.Damage.BaseValue, play, all: true).Execute(context);
     }
-    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play) => await Attack(DynamicVars.Damage.BaseValue, play, all: true).Execute(context);
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
 }

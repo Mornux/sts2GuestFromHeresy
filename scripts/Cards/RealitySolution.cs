@@ -33,5 +33,5 @@ public sealed class RealitySolution() : TemporaryArtAttack(56, CardRarity.Uncomm
         return Task.CompletedTask;
     }
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) => Attack(DynamicVars.Damage.BaseValue, play).Execute(context);
-    protected override void OnUpgrade() { EnergyCost.UpgradeBy(-14); }
+    protected override void OnUpgrade() { EnergyCost.UpgradeBy(-14); AddKeyword(CardKeyword.Retain); }
 }

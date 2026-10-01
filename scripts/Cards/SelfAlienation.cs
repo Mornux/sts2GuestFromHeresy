@@ -25,7 +25,7 @@ public sealed class SelfAlienation() : SynaestheticAttack(1, CardRarity.Common)
     private bool _doubleDamage;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? source) =>
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? source, CardPlay? cardPlay) =>
         source == this && props.IsPoweredAttack() && (_playing ? _doubleDamage : Synaesthesia.IsActive(this)) ? 2m : 1m;
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {

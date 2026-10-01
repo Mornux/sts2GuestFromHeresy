@@ -23,5 +23,5 @@ public sealed class NightmareWave() : TemporaryArtAttack(0, CardRarity.Common)
         await Attack(DynamicVars.Damage.BaseValue, play).Execute(context);
         await PowerCmd.Apply<GazedPower>(context, Owner.Creature, DynamicVars["GazedPower"].BaseValue, Owner.Creature, this);
     }
-    protected override void OnUpgrade() { DynamicVars.Damage.UpgradeValueBy(1m); }
+    protected override void OnUpgrade() { DynamicVars.Damage.UpgradeValueBy(3m); DynamicVars["GazedPower"].UpgradeValueBy(1m); }
 }

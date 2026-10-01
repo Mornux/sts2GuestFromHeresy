@@ -20,7 +20,7 @@ public static class GravityMomentDamagePatch
     public static MethodBase TargetMethod()
     {
         var method = AccessTools.Method(typeof(CreatureCmd), nameof(CreatureCmd.Damage),
-            [typeof(PlayerChoiceContext), typeof(IEnumerable<Creature>), typeof(decimal), typeof(ValueProp), typeof(Creature), typeof(CardModel)]);
+            [typeof(PlayerChoiceContext), typeof(IEnumerable<Creature>), typeof(decimal), typeof(ValueProp), typeof(Creature), typeof(CardModel), typeof(MegaCrit.Sts2.Core.Entities.Cards.CardPlay)]);
         return AccessTools.Method(method.GetCustomAttribute<AsyncStateMachineAttribute>()!.StateMachineType, "MoveNext");
     }
 
@@ -38,10 +38,10 @@ public static class GravityMomentDamagePatch
     }
 
     public static decimal ModifyDamage(IRunState runState, ICombatState? combatState, Creature? target, Creature? dealer,
-        decimal damage, ValueProp props, CardModel? cardSource, ModifyDamageHookType hookType, CardPreviewMode previewMode,
+        decimal damage, ValueProp props, CardModel? cardSource, CardPlay? cardPlay, ModifyDamageHookType hookType, CardPreviewMode previewMode,
         out IEnumerable<AbstractModel> modifiers)
     {
-        decimal modified = Hook.ModifyDamage(runState, combatState, target, dealer, damage, props, cardSource, hookType, previewMode, out modifiers);
+        decimal modified = Hook.ModifyDamage(runState, combatState, target, dealer, damage, props, cardSource, cardPlay, hookType, previewMode, out modifiers);
         return target?.GetPower<GravityMomentPower>() is { } power ? power.Redirect(modified, props, dealer) : modified;
     }
 }

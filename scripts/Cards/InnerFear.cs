@@ -35,7 +35,7 @@ public sealed class InnerFear : ModCardTemplate
         bool allEnemies = Synaesthesia.IsActive(this);
         var targets = allEnemies ? CombatState!.HittableEnemies.ToArray()
             : new[] { cardPlay.Target ?? throw new InvalidOperationException("Inner Fear requires an enemy target.") };
-        var attack = DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this);
+        var attack = DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, cardPlay);
         if (allEnemies) attack.TargetingAllOpponents(CombatState!);
         else attack.Targeting(targets[0]);
         await attack.WithHitFx("vfx/vfx_attack_slash").Execute(choiceContext);
@@ -45,7 +45,7 @@ public sealed class InnerFear : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars["VulnerablePower"].UpgradeValueBy(1m);
     }
 }

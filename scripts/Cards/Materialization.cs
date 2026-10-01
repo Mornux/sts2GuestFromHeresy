@@ -21,9 +21,16 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class Materialization() : SynaestheticAttack(2, CardRarity.Uncommon)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CalculationBaseVar(10m), new ExtraDamageVar(1m), new DynamicVar("Bonus", 10m),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => ProjectionManager.Get(card.Owner).CurrentHp + (Synaesthesia.IsActive(card) ? card.DynamicVars["Bonus"].BaseValue : 0m))];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
-    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play) => await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target!).WithHitFx("vfx/vfx_attack_slash").Execute(context);
-    protected override void OnUpgrade() { DynamicVars.CalculationBase.UpgradeValueBy(3m); DynamicVars["Bonus"].UpgradeValueBy(3m); }
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CalculationBaseVar(10m), new ExtraDamageVar(1m),
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => ProjectionManager.Get(card.Owner).CurrentHp)];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id), HoverTipFactory.FromPower<DisintegrationPower>()];
+    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
+    {
+        bool active = Synaesthesia.IsActive(this);
+        var attack = await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this, play).Targeting(play.Target!).WithHitFx("vfx/vfx_attack_slash").Execute(context);
+        if (active && play.Target!.IsAlive)
+            await PowerCmd.Apply<DisintegrationPower>(context, play.Target,
+                attack.Results.SelectMany(r => r).Where(r => r.Receiver == play.Target).Sum(r => r.TotalDamage), Owner.Creature, this);
+    }
+    protected override void OnUpgrade() => DynamicVars.CalculationBase.UpgradeValueBy(3m);
 }

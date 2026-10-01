@@ -13,10 +13,11 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class GreatBloodSacrifice : ModCardTemplate
 {
-    public GreatBloodSacrifice() : base(3, CardType.Skill, CardRarity.Rare, TargetType.Self, true) { }
+    public GreatBloodSacrifice() : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self, true) { }
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: "res://guestFromHeresy/images/cards/GreatBloodSacrifice.png",
         BetaPortraitPath: "res://guestFromHeresy/images/cards/GreatBloodSacrifice.png");
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(4), new CardsVar(4)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [EnergyHoverTip];

@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Combat;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class WitheringSickness() : TemporaryArtSkill(0, CardRarity.Rare, TargetType.AnyEnemy)
+public sealed class WitheringSickness() : TemporaryArtSkill(0, CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.FromPower<MegaCrit.Sts2.Core.Models.Powers.DisintegrationPower>(), HoverTipFactory.FromCard<MegaCrit.Sts2.Core.Models.Cards.Slimed>(), HoverTipFactory.Static(StaticHoverTip.Transform)];

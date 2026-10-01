@@ -22,10 +22,10 @@ public sealed class MasteryOfLaw() : TemporaryArtSkill(1, CardRarity.Uncommon, T
         if (cardPlay.Target is not { } target) return;
         int repeats = 1 + CombatManager.Instance.History.Entries.OfType<PowerReceivedEntry>()
             .Where(entry => entry.Applier == Owner.Creature && entry.Amount > 0)
-            .Sum(entry => (int)entry.Amount);
+            .Select(entry => entry.Power.Id).Distinct().Count();
         for (int i = 0; i < repeats && !target.IsDead && !Owner.Creature.IsDead; i++)
             await CreatureCmd.Damage(choiceContext, target, DynamicVars.HpLoss.BaseValue,
-                ValueProp.Unblockable | ValueProp.Unpowered, Owner.Creature, this);
+                ValueProp.Unblockable | ValueProp.Unpowered, Owner.Creature, this, cardPlay);
     }
 
     protected override void OnUpgrade() => DynamicVars.HpLoss.UpgradeValueBy(1m);

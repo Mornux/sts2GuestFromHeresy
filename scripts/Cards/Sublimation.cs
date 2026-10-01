@@ -10,19 +10,27 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class Sublimation() : TemporaryArtSkill(1, CardRarity.Uncommon)
+public sealed class Sublimation() : TemporaryArtSkill(0, CardRarity.Uncommon)
 {
     protected override string PortraitName => nameof(Sublimation);
 
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    protected override bool ShouldGlowGoldInternal => guestFromHeresy.Keywords.Synaesthesia.IsActive(this);
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>(),
+        STS2RitsuLib.Keywords.ModKeywordRegistry.CreateHoverTip(guestFromHeresy.Keywords.Synaesthesia.Id)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        bool active = guestFromHeresy.Keywords.Synaesthesia.IsActive(this);
         await PowerCmd.Apply<DisintegrationPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+        if (active && IsUpgraded)
+        {
+            foreach (var card in PileType.Hand.GetPile(Owner).Cards.Where(c => c.IsUpgradable).ToArray()) CardCmd.Upgrade(card);
+            return;
+        }
         var selected = await CardSelectCmd.FromHand(choiceContext, Owner,
-            new CardSelectorPrefs(SelectionScreenPrompt, 1), card => card.IsUpgradable, this);
+            new CardSelectorPrefs(SelectionScreenPrompt, active ? 2 : 1), card => card.IsUpgradable, this);
         foreach (var card in selected) CardCmd.Upgrade(card);
     }
 
-    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
 }

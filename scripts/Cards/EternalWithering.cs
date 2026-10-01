@@ -17,8 +17,8 @@ public sealed class EternalWithering() : TemporaryArtPower(2, CardRarity.Ancient
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<MegaCrit.Sts2.Core.Models.Powers.DisintegrationPower>()];
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Stacks", 3m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Stacks", 7m)];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) =>
         PowerCmd.Apply<EternalWitheringPower>(context, Owner.Creature, DynamicVars["Stacks"].BaseValue, Owner.Creature, this);
-    protected override void OnUpgrade() => DynamicVars["Stacks"].UpgradeValueBy(1);
+    protected override void OnUpgrade() => DynamicVars["Stacks"].UpgradeValueBy(3);
 }

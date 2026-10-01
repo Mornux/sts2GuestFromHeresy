@@ -19,7 +19,7 @@ public abstract class TemporaryArtAttack(int cost, CardRarity rarity, TargetType
 
     protected AttackCommand Attack(decimal damage, CardPlay play, bool all = false, int hits = 1)
     {
-        var attack = DamageCmd.Attack(damage).FromCard(this).WithHitCount(hits);
+        var attack = DamageCmd.Attack(damage).FromCard(this, play).WithHitCount(hits);
         if (all) attack.TargetingAllOpponents(CombatState!);
         else attack.Targeting(play.Target ?? throw new InvalidOperationException("An enemy target is required."));
         return attack.WithHitFx("vfx/vfx_attack_slash");

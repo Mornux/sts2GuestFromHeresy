@@ -37,7 +37,7 @@ public sealed class AtrocityOptimizationPower : ModPowerTemplate
         return Task.CompletedTask;
     }
 
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
         if (dealer != Owner || cardSource?.Type != CardType.Attack || !props.IsPoweredAttack()) return 1m;
         if (_boostedPlay != null) return cardSource == _boostedPlay.Card ? 1m + _consumedAmount / 100m : 1m;

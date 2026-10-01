@@ -13,6 +13,8 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class MillenniumRegret() : TemporaryArtSkill(2, CardRarity.Rare)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.FromPower<guestFromHeresy.Powers.GazedPower>()];
 

@@ -27,7 +27,7 @@ public sealed class DimBarrage() : TemporaryArtAttack(0, CardRarity.Uncommon)
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<ShadowMissile>(IsUpgraded)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target!).WithHitFx("vfx/vfx_attack_slash").Execute(context);
+        await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this, play).Targeting(play.Target!).WithHitFx("vfx/vfx_attack_slash").Execute(context);
         if (CombatManager.Instance.IsOverOrEnding || Owner.Creature.IsDead) return;
         var selected = await CardSelectCmd.FromHand(context, Owner, new CardSelectorPrefs(SelectionScreenPrompt, 1), card => card.IsTransformable, this);
         foreach (var card in selected)

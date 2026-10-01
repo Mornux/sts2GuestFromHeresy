@@ -21,7 +21,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class PsychicTurbulence() : TemporaryArtAttack(1, CardRarity.Uncommon)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7m, ValueProp.Move), new DynamicVar("AffixDamage", 7m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5m, ValueProp.Move), new DynamicVar("AffixDamage", 5m)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {

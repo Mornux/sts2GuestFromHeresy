@@ -23,7 +23,7 @@ internal static class ProjectionDamagePatch
     {
         var method = AccessTools.Method(typeof(CreatureCmd), nameof(CreatureCmd.Damage),
             [typeof(PlayerChoiceContext), typeof(IEnumerable<Creature>), typeof(decimal),
-                typeof(ValueProp), typeof(Creature), typeof(CardModel)]);
+                typeof(ValueProp), typeof(Creature), typeof(CardModel), typeof(MegaCrit.Sts2.Core.Entities.Cards.CardPlay)]);
         return AccessTools.Method(method.GetCustomAttribute<AsyncStateMachineAttribute>()!.StateMachineType, "MoveNext");
     }
 
@@ -52,14 +52,15 @@ internal static class ProjectionDamagePatch
         if (!ProjectionManager.Supports(creature.Player))
             return creature.LoseHpInternal(amount, props);
         bool gazed = ProjectionManager.IsGazed(creature.Player!);
-        if (!gazed)
+        var transfer = creature.GetPower<EctopicPainPower>();
+        if (!gazed && transfer != null && amount >= 1m)
         {
-            var transfer = creature.GetPower<EctopicPainPower>();
-            if (transfer == null || amount < 1m || ProjectionManager.Get(creature.Player!).CurrentHp <= 0)
-                return creature.LoseHpInternal(amount, props);
             transfer.SetAmount(transfer.Amount - 1, true);
             if (transfer.Amount <= 0) transfer.RemoveInternal();
+            ProjectionManager.Heal(creature.Player!, (int)decimal.Truncate(amount));
+            return new DamageResult(creature, props) { UnblockedDamage = 0 };
         }
+        if (!gazed) return creature.LoseHpInternal(amount, props);
         int lost = ProjectionManager.LoseHpInternal(creature.Player!, amount);
         //Preserve hit triggers without reporting the real player dead or forwarding overkill.
         return new DamageResult(creature, props) { UnblockedDamage = lost };

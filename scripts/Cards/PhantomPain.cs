@@ -25,6 +25,6 @@ public sealed class PhantomPain() : TemporaryArtAttack(1, CardRarity.Common)
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((_, target) => DisintegrationTriggers.TimesTriggered(target))];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>()];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) =>
-        DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target!).Execute(context);
+        DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this, play).Targeting(play.Target!).Execute(context);
     protected override void OnUpgrade() { DynamicVars.CalculationBase.UpgradeValueBy(2m); DynamicVars.ExtraDamage.UpgradeValueBy(1m); }
 }

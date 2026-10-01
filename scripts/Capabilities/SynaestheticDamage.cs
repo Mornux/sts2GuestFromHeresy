@@ -35,8 +35,11 @@ public sealed class SynaestheticDamage : ModelCapability<CardModel>, IModelCapab
         if (play.Card != Owner || !_activePlays.Remove(play) || Owner.Owner.Creature.IsDead) return;
         var combat = Owner.Owner.Creature.CombatState;
         if (combat == null || combat.HittableEnemies.Count == 0) return;
-        await DamageCmd.Attack(DynamicVars["TurbulenceDamage"].BaseValue).FromCard(Owner)
-            .TargetingRandomOpponents(combat).WithHitFx("vfx/vfx_attack_slash").Execute(context);
+        var target = Owner.Owner.RunState.Rng.CombatTargets.NextItem(combat.HittableEnemies.ToArray());
+        if (target != null)
+            await CreatureCmd.Damage(context, target, DynamicVars["TurbulenceDamage"].BaseValue,
+                MegaCrit.Sts2.Core.ValueProps.ValueProp.Unblockable | MegaCrit.Sts2.Core.ValueProps.ValueProp.Unpowered,
+                Owner.Owner.Creature, Owner, play);
     }
 
     protected override void DeepCloneFields()

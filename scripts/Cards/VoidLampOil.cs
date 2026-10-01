@@ -21,7 +21,7 @@ public sealed class VoidLampOil() : TemporaryArtAttack(1, CardRarity.Uncommon, T
         if (card != this || Owner.Creature.IsDead) return;
         for (int i = 0; i < 2; i++)
             await CardPileCmd.AddGeneratedCardToCombat(CreateClone(), PileType.Draw, Owner, CardPilePosition.Top);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, null)
             .TargetingAllOpponents(CombatState!).Execute(context);
     }
 }

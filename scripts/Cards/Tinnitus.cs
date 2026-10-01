@@ -30,8 +30,7 @@ public sealed class Tinnitus() : TemporaryArtSkill(0, CardRarity.Common)
         await CardPileCmd.Draw(context, 1m, Owner);
         if (!(CombatState != null && CombatManager.Instance.History.CardPlaysFinished.Any(e =>
             e.CardPlay.Card.Owner == Owner && e.CardPlay.Card is ShadowMissile && e.HappenedThisTurn(CombatState)))) return;
-        var target = Owner.RunState.Rng.CombatTargets.NextItem(CombatState!.HittableEnemies.ToArray());
-        if (target != null) await PowerCmd.Apply<DisintegrationPower>(context, target, DynamicVars["DisintegrationPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DisintegrationPower>(context, CombatState!.HittableEnemies.ToArray(), DynamicVars["DisintegrationPower"].BaseValue, Owner.Creature, this);
     }
-    protected override void OnUpgrade() => DynamicVars["DisintegrationPower"].UpgradeValueBy(1m);
+    protected override void OnUpgrade() => DynamicVars["DisintegrationPower"].UpgradeValueBy(2m);
 }

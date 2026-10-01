@@ -29,7 +29,7 @@ public sealed class RitualHilt() : ArtifactPartCard(1, CardType.Attack, CardRari
             target = source.Owner.RunState.Rng.CombatTargets.NextItem(source.CombatState!.HittableEnemies.ToArray());
         if (target == null) return;
         decimal damage = source.DynamicVars["HiltDamage"].BaseValue * (Synaesthesia.IsActive(source) ? 2 : 1);
-        await DamageCmd.Attack(damage).FromCard(source).Targeting(target).WithHitCount(2)
+        await DamageCmd.Attack(damage).FromCard(source, play).Targeting(target).WithHitCount(2)
             .WithHitFx("vfx/vfx_attack_slash").Execute(context);
     }
 }

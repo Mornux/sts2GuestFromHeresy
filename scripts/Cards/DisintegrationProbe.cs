@@ -24,7 +24,7 @@ public sealed class DisintegrationProbe() : ArtifactPartCard(1, CardType.Attack,
     // The source is the part itself or the artifact executing this component.
     internal static async Task ExecuteEffect(ArtifactPartCard source, PlayerChoiceContext context, CardPlay play)
     {
-        await DamageCmd.Attack(source.DynamicVars["ProbeDamage"].BaseValue).FromCard(source)
+        await DamageCmd.Attack(source.DynamicVars["ProbeDamage"].BaseValue).FromCard(source, play)
             .TargetingAllOpponents(source.CombatState!).WithHitFx("vfx/vfx_attack_slash").Execute(context);
         if (!CombatManager.Instance.IsOverOrEnding)
             await PowerCmd.Apply<DisintegrationPower>(context, source.CombatState!.HittableEnemies.ToArray(), source.DynamicVars["DisintegrationPower"].BaseValue, source.Owner.Creature, source);
