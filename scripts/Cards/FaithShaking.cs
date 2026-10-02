@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Localization;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class FaithShaking() : TemporaryArtSkill(1, CardRarity.Rare)
+public sealed class FaithShaking() : TemporaryArtSkill(0, CardRarity.Rare)
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.FromPower<guestFromHeresy.Powers.GazedPower>()];

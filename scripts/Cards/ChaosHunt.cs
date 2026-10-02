@@ -19,17 +19,32 @@ using STS2RitsuLib.Keywords;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class ChaosHunt() : SynaestheticAttack(3, CardRarity.Uncommon)
+public sealed class ChaosHunt() : SynaestheticAttack(3, CardRarity.Uncommon, TargetType.AllEnemies)
 {
+    private HashSet<CardPlay> _repeatPlays = [];
     protected override string PortraitName => nameof(ChaosHunt);
-    public override TargetType TargetType => Synaesthesia.IsActive(this) ? TargetType.AllEnemies : TargetType.AnyEnemy;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(30m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(24m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<GazedPower>(), ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        var attack = await Attack(DynamicVars.Damage.BaseValue, play, Synaesthesia.IsActive(this)).Execute(context);
-        int kills = attack.Results.SelectMany(r => r).Where(r => r.WasTargetKilled).Select(r => r.Receiver).Distinct().Count();
-        if (kills > 0) await PowerCmd.Apply<GazedPower>(context, Owner.Creature, kills * 3m, Owner.Creature, this);
+        bool active = Synaesthesia.IsActive(this);
+        var attack = await Attack(DynamicVars.Damage.BaseValue, play, all: true).Execute(context);
+        if (active && Owner.Creature.IsAlive && attack.Results.SelectMany(r => r).Any(r => r.WasTargetKilled))
+        {
+            await PowerCmd.Apply<GazedPower>(context, Owner.Creature, 3m, Owner.Creature, this);
+            _repeatPlays.Add(play);
+        }
     }
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(12m);
+    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay play)
+    {
+        if (play.Card == this && _repeatPlays.Remove(play) && Owner.Creature.IsAlive
+            && CombatState!.HittableEnemies.Any() && !CombatManager.Instance.IsOverOrEnding)
+            await CardCmd.AutoPlay(context, this, null);
+    }
+    protected override void DeepCloneFields()
+    {
+        base.DeepCloneFields();
+        _repeatPlays = [];
+    }
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(6m);
 }

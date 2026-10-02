@@ -28,6 +28,12 @@ public sealed class EternalWitheringPower : TemporaryIconPower
     {
         if (card.Owner.Creature != Owner || !Owner.IsAlive) return;
         for (int i = 0; i < amount && Owner.IsAlive; i++)
-            await PowerCmd.Apply<DisintegrationPower>(new ThrowingPlayerChoiceContext(), Owner.CombatState!.HittableEnemies.ToArray(), Amount, Owner, card);
+        {
+            var context = new ThrowingPlayerChoiceContext();
+            await PowerCmd.Apply<DisintegrationPower>(context, Owner.CombatState!.HittableEnemies.ToArray(), Amount, Owner, card);
+            foreach (var enemy in Owner.CombatState.HittableEnemies.ToArray())
+                if (enemy.IsAlive && enemy.GetPower<DisintegrationPower>() is { } power)
+                    await DisintegrationTriggers.Trigger(context, power);
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace guestFromHeresy.Cards;
 public sealed class InverseLevel() : ArtifactPartCard(1, CardType.Skill, CardRarity.Common)
 {
     public override int PartCode => 0;
-    internal static IEnumerable<DynamicVar> EffectVars => [new CardsVar(2)];
+    internal static IEnumerable<DynamicVar> EffectVars => [new CardsVar(3)];
     protected override IEnumerable<DynamicVar> CanonicalVars => EffectVars;
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) => ExecuteEffect(this, context, play);
 

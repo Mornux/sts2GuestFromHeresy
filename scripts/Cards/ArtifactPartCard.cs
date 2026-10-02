@@ -64,6 +64,6 @@ public abstract class ArtifactPartCard(int cost, CardType type, CardRarity rarit
             await PowerCmd.Apply<VoidForgingPower>(context, Owner.Creature, 1m, Owner.Creature, this);
             forge = Owner.Creature.GetPower<VoidForgingPower>();
         }
-        if (forge != null) await forge.Record(this);
+        if (forge != null) await forge.Record(context, this);
     }
 }

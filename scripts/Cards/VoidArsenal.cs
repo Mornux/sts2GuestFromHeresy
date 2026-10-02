@@ -17,11 +17,11 @@ using STS2RitsuLib.Keywords;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class VoidArsenal() : TemporaryArtPower(1, CardRarity.Rare)
+public sealed class VoidArsenal() : TemporaryArtPower(2, CardRarity.Rare)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [ModKeywordRegistry.CreateHoverTip(ArtifactPart.Id)];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) =>
         PowerCmd.Apply<VoidArsenalPower>(context, Owner.Creature, 1m, Owner.Creature, this);
-    protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);
+    protected override void OnUpgrade() { EnergyCost.UpgradeBy(-1); AddKeyword(CardKeyword.Innate); }
 }

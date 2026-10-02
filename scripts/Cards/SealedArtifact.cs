@@ -74,7 +74,7 @@ public sealed class SealedArtifact() : ArtifactPartCard(2, CardType.Attack, Card
     {
         base.AddExtraArgsToDescription(description);
         DynamicVars.Energy.ColorPrefix = EnergyIconHelper.GetPrefix(this);
-        description.Add("Effects", string.Join("\n", EffectCodes.Select(code =>
+        description.Add("Effects", string.Join(" ", EffectCodes.Select(code =>
         {
             var effect = new LocString("cards", $"GUEST_FROM_HERESY_ARTIFACT_EFFECT_{code}.description");
             DynamicVars.AddTo(effect);
