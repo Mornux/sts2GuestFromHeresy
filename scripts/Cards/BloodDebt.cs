@@ -13,6 +13,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class BloodDebt() : TemporaryArtPower(1, CardRarity.Common)
 {
+    protected override string PortraitName => nameof(BloodDebt);
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<MegaCrit.Sts2.Core.Models.Powers.DisintegrationPower>()];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) =>
         PowerCmd.Apply<BloodDebtPower>(context, Owner.Creature, 1m, Owner.Creature, this);
