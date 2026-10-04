@@ -11,7 +11,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace guestFromHeresy.Cards;
 
-[RegisterCard(typeof(CardPool))]
+// Removed from the character card pool in v0.4; keep the implementation.
 public sealed class NightRaid() : TemporaryArtAttack(1, CardRarity.Common)
 {
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

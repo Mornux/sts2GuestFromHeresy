@@ -22,16 +22,15 @@ namespace guestFromHeresy.Cards;
 public sealed class NightfallEmbrace() : SynaestheticAttack(1, CardRarity.Uncommon)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3m, ValueProp.Move)];
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<ShadowMissile>(IsUpgraded), ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromCard<ShadowMissile>(), ModKeywordRegistry.CreateHoverTip(Synaesthesia.Id)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         bool active = Synaesthesia.IsActive(this);
-        await Attack(DynamicVars.Damage.BaseValue, play, hits: 2).Execute(context);
+        await Attack(DynamicVars.Damage.BaseValue, play).Execute(context);
         if (!active || CombatManager.Instance.IsOverOrEnding || Owner.Creature.IsDead) return;
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < (IsUpgraded ? 2 : 1); i++)
         {
             var missile = CardScope!.CreateCard<ShadowMissile>(Owner);
-            if (IsUpgraded) CardCmd.Upgrade(missile, CardPreviewStyle.None);
             await CardPileCmd.AddGeneratedCardToCombat(missile, PileType.Hand, Owner);
         }
     }

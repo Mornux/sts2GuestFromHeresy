@@ -17,7 +17,7 @@ namespace guestFromHeresy.Cards;
 public sealed class RitualHilt() : ArtifactPartCard(1, CardType.Attack, CardRarity.Uncommon)
 {
     public override int PartCode => 6;
-    internal static IEnumerable<DynamicVar> EffectVars => [new DamageVar("HiltDamage", 6m, ValueProp.Move)];
+    internal static IEnumerable<DynamicVar> EffectVars => [new DamageVar("HiltDamage", 3m, ValueProp.Move)];
     protected override IEnumerable<DynamicVar> CanonicalVars => EffectVars;
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) => ExecuteEffect(this, context, play);
 

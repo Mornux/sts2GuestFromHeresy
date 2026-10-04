@@ -24,19 +24,16 @@ public sealed class GloomLash() : TemporaryArtSkill(1, CardRarity.Uncommon)
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int repeats = Synaesthesia.IsActive(this) ? 2 : 1;
-        for (int i = 0; i < repeats; i++)
-        {
-            if (Owner.Creature.IsDead) break;
-            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-            var leftmost = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault();
-            if (leftmost != null && !leftmost.EnergyCost.CostsX) leftmost.EnergyCost.AddThisCombat(-1);
-        }
+        int reduction = Synaesthesia.IsActive(this) ? 2 : 1;
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        if (Owner.Creature.IsDead) return;
+        var leftmost = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault();
+        if (leftmost != null && !leftmost.EnergyCost.CostsX) leftmost.EnergyCost.AddThisCombat(-reduction);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(2m);
-        RemoveKeyword(CardKeyword.Exhaust);
+        AddKeyword(CardKeyword.Retain);
     }
 }

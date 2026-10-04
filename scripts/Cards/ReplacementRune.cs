@@ -11,9 +11,10 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class ReplacementRune() : TemporaryArtSkill(1, CardRarity.Uncommon)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.FromCard<ShadowMissile>(), HoverTipFactory.Static(StaticHoverTip.Transform)];
 
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) => PowerCmd.Apply<ReplacementRunePower>(context, Owner.Creature, 1m, Owner.Creature, this);
-    protected override void OnUpgrade() { EnergyCost.UpgradeBy(-1); }
+    protected override void OnUpgrade() { EnergyCost.UpgradeBy(-1); AddKeyword(CardKeyword.Retain); }
 }

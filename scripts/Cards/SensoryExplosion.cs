@@ -14,6 +14,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class SensoryExplosion() : TemporaryArtSkill(2, CardRarity.Uncommon)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override string PortraitName => nameof(SensoryExplosion);
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("LayersPerTrigger", 2m)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>()];

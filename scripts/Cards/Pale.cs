@@ -12,6 +12,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class Pale() : TemporaryArtSkill(0, CardRarity.Common, TargetType.AnyEnemy)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override string PortraitName => nameof(Pale);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<VulnerablePower>(2m), new PowerVar<WeakPower>(2m)];
@@ -20,7 +21,7 @@ public sealed class Pale() : TemporaryArtSkill(0, CardRarity.Common, TargetType.
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<DisintegrationPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<DisintegrationPower>(choiceContext, Owner.Creature, 3m, Owner.Creature, this);
         if (cardPlay.Target is not { } target) return;
         await PowerCmd.Apply<VulnerablePower>(choiceContext, target, DynamicVars["VulnerablePower"].BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<WeakPower>(choiceContext, target, DynamicVars["WeakPower"].BaseValue, Owner.Creature, this);

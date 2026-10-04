@@ -17,7 +17,7 @@ namespace guestFromHeresy.Cards;
 public sealed class EnchantedMagnet() : ArtifactPartCard(1, CardType.Attack, CardRarity.Common)
 {
     public override int PartCode => 7;
-    internal static IEnumerable<DynamicVar> EffectVars => [new DamageVar("MagnetDamage", 13m, ValueProp.Move), new PowerVar<VigorPower>(6m)];
+    internal static IEnumerable<DynamicVar> EffectVars => [new DamageVar("MagnetDamage", 6m, ValueProp.Move), new PowerVar<VigorPower>(6m)];
     protected override IEnumerable<DynamicVar> CanonicalVars => EffectVars;
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) => ExecuteEffect(this, context, play);
 

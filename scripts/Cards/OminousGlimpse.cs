@@ -18,7 +18,7 @@ using STS2RitsuLib.Keywords;
 
 namespace guestFromHeresy.Cards;
 
-[RegisterCard(typeof(CardPool))]
+// Removed from the character card pool in v0.4; keep the implementation.
 public sealed class OminousGlimpse() : TemporaryArtAttack(1, CardRarity.Uncommon)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7m, ValueProp.Move), new CalculationBaseVar(1m), new CalculationExtraVar(1m),

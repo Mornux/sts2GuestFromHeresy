@@ -37,5 +37,5 @@ public sealed class DimBarrage() : TemporaryArtAttack(0, CardRarity.Uncommon)
             await CardCmd.Transform(card, missile, CardPreviewStyle.None);
         }
     }
-    protected override void OnUpgrade() { }
+    protected override void OnUpgrade() => DynamicVars.ExtraDamage.UpgradeValueBy(1m);
 }

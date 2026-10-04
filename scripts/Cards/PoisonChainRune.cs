@@ -16,5 +16,5 @@ public sealed class PoisonChainRune() : TemporaryArtSkill(1, CardRarity.Uncommon
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) => PowerCmd.Apply<PoisonChainRunePower>(context, Owner.Creature, 1m, Owner.Creature, this);
-    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
+    protected override void OnUpgrade() { EnergyCost.UpgradeBy(-1); AddKeyword(CardKeyword.Retain); }
 }

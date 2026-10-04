@@ -21,10 +21,9 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class PhantomPain() : TemporaryArtAttack(1, CardRarity.Common)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CalculationBaseVar(7m), new ExtraDamageVar(2m),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((_, target) => DisintegrationTriggers.TimesTriggered(target))];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>()];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) =>
-        DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this, play).Targeting(play.Target!).Execute(context);
-    protected override void OnUpgrade() { DynamicVars.CalculationBase.UpgradeValueBy(2m); DynamicVars.ExtraDamage.UpgradeValueBy(1m); }
+        Attack(DynamicVars.Damage.BaseValue, play, hits: 1 + DisintegrationTriggers.TotalTimesTriggered(CombatState)).Execute(context);
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
 }

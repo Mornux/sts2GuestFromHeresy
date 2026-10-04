@@ -28,6 +28,9 @@ public static class DisintegrationTriggers
     public static int TimesTriggered(Creature? creature) => creature?.CombatState is { } combat
         && TriggerCounts.TryGetValue(combat, out var counts) ? counts.GetValueOrDefault(creature) : 0;
 
+    public static int TotalTimesTriggered(ICombatState? combat) => combat != null
+        && TriggerCounts.TryGetValue(combat, out var counts) ? counts.Values.Sum() : 0;
+
     public static async Task<int> Trigger(PlayerChoiceContext context, DisintegrationPower power)
     {
         var owner = power.Owner;

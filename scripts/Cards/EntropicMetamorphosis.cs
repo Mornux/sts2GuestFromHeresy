@@ -16,7 +16,7 @@ public sealed class EntropicMetamorphosis : ModCardTemplate
         PortraitPath: "res://guestFromHeresy/images/cards/EntropicMetamorphosis.png",
         BetaPortraitPath: "res://guestFromHeresy/images/cards/EntropicMetamorphosis.png");
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain, CardKeyword.Exhaust];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(6)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(4)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -25,5 +25,5 @@ public sealed class EntropicMetamorphosis : ModCardTemplate
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 
-    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
+    protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(2);
 }

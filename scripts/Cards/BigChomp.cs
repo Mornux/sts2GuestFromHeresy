@@ -11,7 +11,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class BigChomp() : TemporaryArtPower(3, CardRarity.Uncommon)
+public sealed class BigChomp() : TemporaryArtPower(2, CardRarity.Uncommon)
 {
     protected override string PortraitName => nameof(BigChomp);
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<GazedPower>()];
@@ -28,5 +28,9 @@ public sealed class BigChomp() : TemporaryArtPower(3, CardRarity.Uncommon)
         var power = await PowerCmd.Apply<BigChompPower>(context, Owner.Creature, 1m, Owner.Creature, this);
         power?.SetMeal(chosen);
     }
-    protected override void OnUpgrade() => RemoveKeyword(CardKeyword.Ethereal);
+    protected override void OnUpgrade()
+    {
+        RemoveKeyword(CardKeyword.Ethereal);
+        AddKeyword(CardKeyword.Retain);
+    }
 }

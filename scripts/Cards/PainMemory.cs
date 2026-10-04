@@ -19,7 +19,7 @@ using STS2RitsuLib.Keywords;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class PainMemory() : TemporaryArtSkill(0, CardRarity.Uncommon, TargetType.AnyEnemy)
+public sealed class PainMemory() : TemporaryArtSkill(1, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Triggers", 1m), new CardsVar(1)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>()];
@@ -31,5 +31,5 @@ public sealed class PainMemory() : TemporaryArtSkill(0, CardRarity.Uncommon, Tar
             if (target.GetPower<DisintegrationPower>() is { } power) lost += await DisintegrationTriggers.Trigger(context, power);
         if (lost > 0) await CardPileCmd.Draw(context, DynamicVars.Cards.BaseValue, Owner);
     }
-    protected override void OnUpgrade() { DynamicVars["Triggers"].UpgradeValueBy(1m); DynamicVars.Cards.UpgradeValueBy(1m); }
+    protected override void OnUpgrade() { EnergyCost.UpgradeBy(-1); DynamicVars.Cards.UpgradeValueBy(1m); }
 }

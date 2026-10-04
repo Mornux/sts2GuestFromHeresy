@@ -22,20 +22,21 @@ public sealed class FateTakeover() : TemporaryArtSkill(3, CardRarity.Uncommon)
         [new BlockVar(21m, ValueProp.Move), new PowerVar<DisintegrationPower>(3m)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>()];
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay) =>
-        CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        await PowerCmd.Apply<DisintegrationPower>(choiceContext, Owner.Creature,
+            DynamicVars["DisintegrationPower"].BaseValue, Owner.Creature, this);
+    }
 
     public override async Task AfterAutoPrePlayPhaseEnteredEarly(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner || Pile?.Type != PileType.Exhaust) return;
         await CardCmd.AutoPlay(choiceContext, this, null);
-        await PowerCmd.Apply<DisintegrationPower>(choiceContext, Owner.Creature,
-            DynamicVars["DisintegrationPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(6m);
-        DynamicVars["DisintegrationPower"].UpgradeValueBy(-1m);
     }
 }

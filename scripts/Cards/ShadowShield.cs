@@ -30,7 +30,7 @@ public sealed class ShadowShield : ModCardTemplate
     {
         if (card != this || Pile?.Type != PileType.Discard || oldPileType == PileType.Discard) return;
         await PowerCmd.Apply<DisintegrationPower>(new ThrowingPlayerChoiceContext(),
-            Owner.Creature, 1m, Owner.Creature, this);
+            Owner.Creature, 2m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(4m);

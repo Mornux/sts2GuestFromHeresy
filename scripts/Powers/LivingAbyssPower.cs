@@ -13,7 +13,7 @@ public sealed class LivingAbyssPower : TemporaryIconPower
 {
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay play)
     {
-        if (play.Card.Owner.Creature != Owner || !Owner.IsAlive || CombatManager.Instance.IsOverOrEnding) return;
+        if (play.Card.Type != CardType.Attack || play.Card.Owner.Creature != Owner || !Owner.IsAlive || CombatManager.Instance.IsOverOrEnding) return;
         var enemies = Owner.CombatState!.HittableEnemies.Where(c => c.IsAlive).ToArray();
         if (enemies.Length == 0) return;
         var target = Owner.Player!.RunState.Rng.CombatTargets.NextItem(enemies)!;
