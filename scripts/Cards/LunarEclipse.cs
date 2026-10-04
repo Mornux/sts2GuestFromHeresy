@@ -21,6 +21,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class LunarEclipse() : TemporaryArtAttack(1, CardRarity.Common)
 {
+    protected override string PortraitName => nameof(LunarEclipse);
     protected override HashSet<CardTag> CanonicalTags => [CardTags.MoonPhase];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [CardTags.MoonPhaseHoverTip, HoverTipFactory.FromCard<Crescent>(), HoverTipFactory.FromCard<FullMoon>()];

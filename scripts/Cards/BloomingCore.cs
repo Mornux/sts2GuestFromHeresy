@@ -1,3 +1,4 @@
+using STS2RitsuLib.Scaffolding.Content;
 using guestFromHeresy.Pools;
 using guestFromHeresy.Powers;
 using guestFromHeresy.Keywords;
@@ -16,6 +17,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class BloomingCore() : ArtifactPartCard(1, CardType.Skill, CardRarity.Uncommon)
 {
+    public override CardAssetProfile AssetProfile => new(PortraitPath: "res://guestFromHeresy/images/cards/BloomingCore.png", BetaPortraitPath: "res://guestFromHeresy/images/cards/BloomingCore.png");
     public override int PartCode => 2;
     internal static IEnumerable<DynamicVar> EffectVars => [new PowerVar<GazedPower>(2m), new EnergyVar(2)];
     protected override IEnumerable<DynamicVar> CanonicalVars => EffectVars;

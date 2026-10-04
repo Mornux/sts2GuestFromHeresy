@@ -19,6 +19,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class BlackIronCrash() : TemporaryArtAttack(2, CardRarity.Uncommon)
 {
+    protected override string PortraitName => nameof(BlackIronCrash);
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(11m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [CardTags.ArtifactHoverTip];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)

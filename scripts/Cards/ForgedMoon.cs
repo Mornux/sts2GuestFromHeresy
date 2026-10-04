@@ -19,6 +19,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class ForgedMoon() : TemporaryArtAttack(0, CardRarity.Common)
 {
+    protected override string PortraitName => nameof(ForgedMoon);
     protected override HashSet<CardTag> CanonicalTags => [CardTags.MoonPhase];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

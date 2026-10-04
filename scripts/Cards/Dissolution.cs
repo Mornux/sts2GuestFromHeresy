@@ -13,6 +13,7 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class Dissolution() : TemporaryArtAttack(1, CardRarity.Uncommon)
 {
+    protected override string PortraitName => nameof(Dissolution);
     protected override IEnumerable<IHoverTip> AdditionalHoverTips
     {
         get
