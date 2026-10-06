@@ -15,7 +15,6 @@ public sealed class BigChomp() : TemporaryArtPower(2, CardRarity.Uncommon)
 {
     protected override string PortraitName => nameof(BigChomp);
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<GazedPower>()];
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         var skills = PileType.Hand.GetPile(Owner).Cards.Where(c => c.Type == CardType.Skill).ToArray();
@@ -30,7 +29,7 @@ public sealed class BigChomp() : TemporaryArtPower(2, CardRarity.Uncommon)
     }
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Ethereal);
+        EnergyCost.UpgradeBy(-1);
         AddKeyword(CardKeyword.Retain);
     }
 }

@@ -7,7 +7,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace guestFromHeresy.Cards;
 
-[RegisterCard(typeof(CardPool))]
+// Removed from the character card pool in v0.4.1; keep the implementation.
 public sealed class Judgment() : TemporaryArtSkill(1, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override string PortraitName => nameof(Judgment);

@@ -18,12 +18,12 @@ public sealed class DespairShield() : TemporaryArtSkill(0, CardRarity.Uncommon)
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.FromPower<MegaCrit.Sts2.Core.Models.Powers.DisintegrationPower>()];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Multiplier", 4m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Multiplier", 3m)];
     public override bool GainsBlock => true;
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         await PowerCmd.Apply<DisintegrationPower>(context, Owner.Creature, 10m, Owner.Creature, this);
         await CreatureCmd.GainBlock(Owner.Creature, new BlockVar(DynamicVars["Multiplier"].BaseValue * Owner.Creature.GetPowerAmount<DisintegrationPower>(), ValueProp.Move), play);
     }
-    protected override void OnUpgrade() => DynamicVars["Multiplier"].UpgradeValueBy(2m);
+    protected override void OnUpgrade() => DynamicVars["Multiplier"].UpgradeValueBy(1m);
 }

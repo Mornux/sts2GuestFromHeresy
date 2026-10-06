@@ -19,6 +19,4 @@ public sealed class LivingAbyssPower : TemporaryIconPower
         var target = Owner.Player!.RunState.Rng.CombatTargets.NextItem(enemies)!;
         await PowerCmd.Apply<DisintegrationPower>(context, target, Amount, Owner, play.Card);
     }
-    public override Task AfterSideTurnEnd(PlayerChoiceContext context, CombatSide side, IEnumerable<Creature> participants) =>
-        participants.Contains(Owner) ? PowerCmd.Remove(this) : Task.CompletedTask;
 }

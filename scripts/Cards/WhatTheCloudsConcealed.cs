@@ -15,23 +15,34 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class PartingClouds() : TemporaryArtAttack(2, CardRarity.Uncommon, TargetType.AllEnemies)
+public sealed class WhatTheCloudsConcealed() : TemporaryArtAttack(0, CardRarity.Rare, TargetType.AllEnemies)
 {
+    protected override string PortraitName => nameof(WhatTheCloudsConcealed);
+    protected override bool HasEnergyCostX => true;
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
-        description.Add("Hits", IsMutable ? DebuffStacks(Owner.Creature) : 0);
+        int x = IsMutable && Owner.PlayerCombatState != null && CombatState is { } combat
+            ? MegaCrit.Sts2.Core.Hooks.Hook.ModifyXValue(combat, this,
+                Pile?.Type == PileType.Play ? EnergyCost.CapturedXValue : Owner.PlayerCombatState.Energy) : 0;
+        int layers = Math.Max(0, x + (IsUpgraded ? 1 : 0));
+        description.Add("Hits", IsMutable ? Owner.Creature.Powers.Sum(p => Math.Min(NegativeStacks(p), layers)) : 0);
     }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         var debuffs = Owner.Creature.Powers.Where(p => p.Type == PowerType.Debuff || NegativeStacks(p) > 0).ToArray();
         int removed = 0;
+        int layers = Math.Max(0, ResolveEnergyXValue() + (IsUpgraded ? 1 : 0));
         foreach (var power in debuffs)
         {
             int before = NegativeStacks(power);
-            await PowerCmd.Remove(power);
-            if (!Owner.Creature.Powers.Contains(power)) removed += before;
+            int reduction = Math.Min(before, layers);
+            if (reduction == 0) continue;
+            await PowerCmd.ModifyAmount(context, power, power.Amount < 0 ? reduction : -reduction, Owner.Creature, this);
+            int after = Owner.Creature.Powers.Contains(power) ? NegativeStacks(power) : 0;
+            removed += Math.Max(0, before - after);
         }
         for (int i = 0; i < removed && Owner.Creature.IsAlive && !CombatManager.Instance.IsOverOrEnding; i++)
         {
@@ -42,5 +53,5 @@ public sealed class PartingClouds() : TemporaryArtAttack(2, CardRarity.Uncommon,
                 .WithHitFx("vfx/vfx_attack_slash").Execute(context);
         }
     }
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
+    protected override void OnUpgrade() { DynamicVars.Damage.UpgradeValueBy(2m); AddKeyword(CardKeyword.Retain); }
 }

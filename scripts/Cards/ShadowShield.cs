@@ -15,12 +15,12 @@ namespace guestFromHeresy.Cards;
 [RegisterCard(typeof(CardPool))]
 public sealed class ShadowShield : ModCardTemplate
 {
-    public ShadowShield() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true) { }
+    public ShadowShield() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self, true) { }
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: "res://guestFromHeresy/images/cards/ShadowShield.png",
         BetaPortraitPath: "res://guestFromHeresy/images/cards/ShadowShield.png");
     public override bool GainsBlock => true;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(10m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(8m, ValueProp.Move)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>()];
 
     protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay) =>
@@ -33,5 +33,5 @@ public sealed class ShadowShield : ModCardTemplate
             Owner.Creature, 2m, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(4m);
+    protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(2m);
 }

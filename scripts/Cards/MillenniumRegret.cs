@@ -18,11 +18,11 @@ public sealed class MillenniumRegret() : TemporaryArtSkill(2, CardRarity.Rare)
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
         [HoverTipFactory.FromPower<guestFromHeresy.Powers.GazedPower>()];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GazedPower>(5m), new DynamicVar("MaxHp", 20m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GazedPower>(3m), new DynamicVar("MaxHp", 20m)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         await PowerCmd.Apply<GazedPower>(context, Owner.Creature, DynamicVars["GazedPower"].BaseValue, Owner.Creature, this);
         ProjectionManager.ProjectionGainMaxHp(Owner, DynamicVars["MaxHp"].IntValue);
     }
-    protected override void OnUpgrade() { DynamicVars["GazedPower"].UpgradeValueBy(2m); DynamicVars["MaxHp"].UpgradeValueBy(10m); }
+    protected override void OnUpgrade() { DynamicVars["GazedPower"].UpgradeValueBy(2m); DynamicVars["MaxHp"].UpgradeValueBy(5m); }
 }

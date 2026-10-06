@@ -3,7 +3,7 @@
   "name": "guestFromHeresy",
   "author": "Mornux",
   "description": "void",
-  "version": "0.0.7",
+  "version": "0.4.1",
   "min_game_version": "0.0.0",
   "has_pck": true,
   "has_dll": true,

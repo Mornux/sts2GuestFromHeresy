@@ -31,6 +31,7 @@ public sealed class BurntOffering() : TemporaryArtSkill(2, CardRarity.Rare)
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
+        AddKeyword(CardKeyword.Retain);
         DynamicVars["MaxHp"].UpgradeValueBy(1m);
     }
 }

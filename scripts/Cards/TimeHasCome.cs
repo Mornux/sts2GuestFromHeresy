@@ -25,5 +25,5 @@ public sealed class TimeHasCome() : TemporaryArtSkill(0, CardRarity.Common)
         await PlayerCmd.GainEnergy(energy, Owner);
     }
 
-    protected override void OnUpgrade() { }
+    protected override void OnUpgrade() => RemoveKeyword(CardKeyword.Ethereal);
 }

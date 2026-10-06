@@ -12,11 +12,11 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace guestFromHeresy.Cards;
 
 [RegisterCard(typeof(CardPool))]
-public sealed class LivingAbyss() : TemporaryArtSkill(0, CardRarity.Uncommon)
+public sealed class LivingAbyss() : TemporaryArtPower(1, CardRarity.Uncommon)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<LivingAbyssPower>(2m)];
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [HoverTipFactory.FromPower<DisintegrationPower>()];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) =>
         PowerCmd.Apply<LivingAbyssPower>(context, Owner.Creature, DynamicVars["LivingAbyssPower"].BaseValue, Owner.Creature, this);
-    protected override void OnUpgrade() => DynamicVars["LivingAbyssPower"].UpgradeValueBy(1m);
+    protected override void OnUpgrade() { EnergyCost.UpgradeBy(-1); DynamicVars["LivingAbyssPower"].UpgradeValueBy(1m); }
 }
